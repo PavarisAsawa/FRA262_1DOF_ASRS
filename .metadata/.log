@@ -1,0 +1,21 @@
+!SESSION 2024-04-14 02:34:37.876 -----------------------------------------------
+eclipse.buildId=Version 1.14.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-04-14 02:34:46.459
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-04-14 02:34:46.468
+!MESSAGE Log4j2 initialized with config file C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-04-14 02:34:49.706
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-04-14 02:35:42.887
+!MESSAGE Indexed 'FRA262_Studio3' (24 sources, 118 headers) in 4.88 sec: 12,345 declarations; 53,221 references; 3 unresolved inclusions; 46 syntax errors; 173 unresolved names (0.26%)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2024-04-14 02:44:11.187
+!MESSAGE Won't launch debug session since we failed to locate the binary.

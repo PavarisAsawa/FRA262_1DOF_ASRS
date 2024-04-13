@@ -1,0 +1,27 @@
+02:54:36 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/Encoder.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Encoder.d" -MT"Core/Src/Encoder.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Encoder.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32g4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32g4xx_hal_msp.d" -MT"Core/Src/stm32g4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32g4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32g4xx_it.d" -MT"Core/Src/stm32g4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_it.o"
+../Core/Src/Encoder.c: In function 'QEIEncoder_Update':
+../Core/Src/Encoder.c:20:15: warning: unused variable 'diffTime' [-Wunused-variable]
+   20 |         float diffTime = (QEIdata->TimeStamp[0]-QEIdata->TimeStamp[1]) * 0.000001;      // time [seconds]
+      |               ^~~~~~~~
+../Core/Src/Encoder.c:18:17: warning: unused variable 'diffPosition' [-Wunused-variable]
+   18 |         int64_t diffPosition = QEIdata->Position[0] - QEIdata->Position[1];                     // position [pulse]
+      |                 ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  15476	     20	   1880	  17376	   43e0	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+
+02:54:38 Build Finished. 0 errors, 2 warnings. (took 1s.866ms)
+
