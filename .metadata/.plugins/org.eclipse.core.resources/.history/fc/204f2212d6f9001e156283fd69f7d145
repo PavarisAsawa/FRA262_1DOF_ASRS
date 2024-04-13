@@ -33,5 +33,5 @@ void QEIEncoder_Update(TIM_HandleTypeDef* Encoder_tim, QEIStructureTypeDef* QEId
 
 void QEIEncoder_SetHome(TIM_HandleTypeDef* Encoder_tim, QEIStructureTypeDef* QEIdata)
 {
-	QEIdata->LinearPosition = 0;	//	Set Zero Position
+	QEIdata->LinearPosition = 0;
 }

@@ -346,7 +346,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)	// Timer Interupt
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim2)
 	{
@@ -355,12 +355,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)	// Timer Interupt
 	}
 }
 
-uint64_t micros()	// System Time
+uint64_t micros()
 {
 	return __HAL_TIM_GET_COUNTER(&htim5)+_micros;
 }
 
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)				//	External Interrupt
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 	if(GPIO_Pin == GPIO_PIN_13)
 	{

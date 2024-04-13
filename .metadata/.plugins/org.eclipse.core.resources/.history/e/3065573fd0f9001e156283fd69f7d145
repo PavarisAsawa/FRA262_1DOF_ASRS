@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "Encoder.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,8 +47,6 @@ TIM_HandleTypeDef htim5;
 
 /* USER CODE BEGIN PV */
 uint64_t _micros;
-QEIStructureTypeDef QEI;
-uint64_t test;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -99,9 +97,7 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 
-  HAL_TIM_Base_Start_IT(&htim2);						// Initialize System Timer
-
-  HAL_TIM_Encoder_Start(&htim5, TIM_CHANNEL_ALL);		// Initialize Encoder Timer
+  HAL_TIM_Base_Start_IT(&htim2);		// Initialize System Clock
 
   /* USER CODE END 2 */
 
@@ -112,7 +108,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  test = __HAL_TIM_GET_COUNTER(&htim5);
   }
   /* USER CODE END 3 */
 }
@@ -346,27 +341,19 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)	// Timer Interupt
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim2)
 	{
 		_micros += 1000;
-		QEIEncoder_Update(&htim5,&QEI,micros());
 	}
 }
 
-uint64_t micros()	// System Time
+uint64_t micros()
 {
 	return __HAL_TIM_GET_COUNTER(&htim5)+_micros;
 }
 
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)				//	External Interrupt
-{
-	if(GPIO_Pin == GPIO_PIN_13)
-	{
-		QEIEncoder_SetHome(&htim5, &QEI);
-	}
-}
 /* USER CODE END 4 */
 
 /**

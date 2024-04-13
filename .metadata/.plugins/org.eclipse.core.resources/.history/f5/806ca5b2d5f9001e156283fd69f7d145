@@ -29,9 +29,5 @@ void QEIEncoder_Update(TIM_HandleTypeDef* Encoder_tim, QEIStructureTypeDef* QEId
 	//Updata NEW[0] to OLD[1] Value
 	QEIdata->TimeStamp[1] = QEIdata->TimeStamp[0];
 	QEIdata->Position[1] = QEIdata->Position[0];
-}
 
-void QEIEncoder_SetHome(TIM_HandleTypeDef* Encoder_tim, QEIStructureTypeDef* QEIdata)
-{
-	QEIdata->LinearPosition = 0;	//	Set Zero Position
 }

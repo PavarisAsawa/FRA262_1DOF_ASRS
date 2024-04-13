@@ -1,1 +1,2 @@
-../Core/Src/Encoder.c:13:6:QEIEncoder_Update	1
+../Core/Src/Encoder.c:14:6:QEIEncoder_Update	3
+../Core/Src/Encoder.c:34:6:QEIEncoder_SetHome	1
