@@ -1,0 +1,23 @@
+/*
+ * Encoder.h
+ *
+ *  Created on: Apr 10, 2024
+ *      Author: emper
+ */
+
+#ifndef INC_ENCODER_H_
+#define INC_ENCODER_H_
+
+#include "main.h"
+
+typedef struct _QEIStructure
+{
+	uint64_t Position[2];
+	uint64_t TimeStamp[2];
+	float Postion_1turn;	// Degree
+	float AngularVelocity;	// RPM
+}QEIStructureTypeDef;
+
+void QEIEncoder_Update(TIM_HandleTypeDef* Encoder_tim,QEIStructureTypeDef* QEIStructure ,uint64_t current_time);
+
+#endif /* INC_ENCODER_H_ */
