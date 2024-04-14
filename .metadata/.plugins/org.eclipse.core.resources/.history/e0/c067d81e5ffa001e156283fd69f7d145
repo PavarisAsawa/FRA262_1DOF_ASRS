@@ -14,11 +14,10 @@ typedef struct _QEIStructure
 {
 	uint64_t Position[2];
 	uint64_t TimeStamp[2];
-	float Postion_1turn;		// Degree
-	float AngularVelocity;		// RPM
-	float LinearAcceleration;	// [mm/s^2]
-	float LinearVelocity;		// mm/s
-	float LinearPosition;		// mm
+	float Postion_1turn;	// Degree
+	float AngularVelocity;	// RPM
+	float LinearVelocity;	// mm/s^2
+	float LinearPosition;	// mm
 }QEIStructureTypeDef;
 
 void QEIEncoder_Update(TIM_HandleTypeDef* Encoder_tim,QEIStructureTypeDef* QEIStructure ,uint64_t current_time);

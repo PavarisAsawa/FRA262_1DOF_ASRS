@@ -1,2 +1,2 @@
 ../Core/Src/Encoder.c:14:6:QEIEncoder_Update	88	static
-../Core/Src/Encoder.c:34:6:QEIEncoder_SetHome	16	static
+../Core/Src/Encoder.c:39:6:QEIEncoder_SetHome	16	static

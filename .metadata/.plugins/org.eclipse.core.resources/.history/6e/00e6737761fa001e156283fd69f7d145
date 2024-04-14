@@ -28,7 +28,7 @@ void QEIEncoder_Update(TIM_HandleTypeDef* Encoder_tim, QEIStructureTypeDef* QEId
 	QEIdata->LinearPosition		+=	(diffPosition*16.0)/resolution;				//	Linear	Position [mm]
 	QEIdata->LinearVelocity		=	(QEIdata->AngularVelocity * 16)/60.0;		//	Linear	Velocity [mm/s]
 	tempVel[0]					=	QEIdata->LinearVelocity;
-	QEIdata->LinearAcceleration	=	(tempVel[0] - tempVel[1])/diffTime;			// Linear	Acceleration [mm/s^2]
+	QEIdata->LinearAcceleration	=	(tempVel[0] - tempVel[1])/diffTime;
 
 	//Updata NEW[0] to OLD[1] Value
 	QEIdata->TimeStamp[1]	=	QEIdata->TimeStamp[0];
