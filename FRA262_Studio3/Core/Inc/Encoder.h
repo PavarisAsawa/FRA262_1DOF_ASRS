@@ -19,9 +19,11 @@ typedef struct _QEIStructure
 	float LinearAcceleration;	// [mm/s^2]
 	float LinearVelocity;		// mm/s
 	float LinearPosition;		// mm
+	TIM_HandleTypeDef* EncoderTIM;	// Define Encoder Timer
 }QEIStructureTypeDef;
 
-void QEIEncoder_Update(TIM_HandleTypeDef* Encoder_tim,QEIStructureTypeDef* QEIStructure ,uint64_t current_time);
-void QEIEncoder_SetHome(TIM_HandleTypeDef* Encoder_tim,QEIStructureTypeDef* QEIStructure);
+void QEIEncoder_Init(QEIStructureTypeDef* QEIStructure ,TIM_HandleTypeDef* Encoder_tim);
+void QEIEncoder_Update(QEIStructureTypeDef* QEIStructure ,uint64_t current_time);
+void QEIEncoder_SetHome(QEIStructureTypeDef* QEIStructure);
 
 #endif /* INC_ENCODER_H_ */

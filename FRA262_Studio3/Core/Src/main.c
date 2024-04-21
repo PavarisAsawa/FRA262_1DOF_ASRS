@@ -100,8 +100,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   HAL_TIM_Base_Start_IT(&htim2);						// Initialize System Timer
-
-  HAL_TIM_Encoder_Start(&htim5, TIM_CHANNEL_ALL);		// Initialize Encoder Timer
+  QEIEncoder_Init(&QEI,&htim5);							// Initialize QEI Encoder
 
   /* USER CODE END 2 */
 
@@ -351,20 +350,20 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)	// Timer Interupt
 	if(htim == &htim2)
 	{
 		_micros += 1000;
-		QEIEncoder_Update(&htim5,&QEI,micros());
+		QEIEncoder_Update(&QEI,micros());
 	}
 }
 
 uint64_t micros()	// System Time
 {
-	return __HAL_TIM_GET_COUNTER(&htim5)+_micros;
+	return __HAL_TIM_GET_COUNTER(&htim2)+_micros;
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)				//	External Interrupt
 {
-	if(GPIO_Pin == GPIO_PIN_13)
+	if(GPIO_Pin == GPIO_PIN_13)			// Blue Switch
 	{
-		QEIEncoder_SetHome(&htim5, &QEI);
+		QEIEncoder_SetHome(&QEI);
 	}
 }
 /* USER CODE END 4 */

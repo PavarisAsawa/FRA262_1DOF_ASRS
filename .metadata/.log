@@ -19,3 +19,33 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2024-04-14 02:44:11.187
 !MESSAGE Won't launch debug session since we failed to locate the binary.
+!SESSION 2024-04-14 20:37:04.267 -----------------------------------------------
+eclipse.buildId=Version 1.14.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-04-14 20:37:53.400
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-04-14 20:37:53.408
+!MESSAGE Log4j2 initialized with config file C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-04-14 20:38:00.559
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-04-21 15:07:25.648 -----------------------------------------------
+eclipse.buildId=Version 1.14.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-04-21 15:07:54.827
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-04-21 15:07:54.835
+!MESSAGE Log4j2 initialized with config file C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-04-21 15:08:02.753
+!MESSAGE Started RMI Server, listening on port 41337
