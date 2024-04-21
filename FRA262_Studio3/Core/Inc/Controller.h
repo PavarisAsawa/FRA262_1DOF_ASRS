@@ -1,0 +1,32 @@
+/*
+ * Controller.h
+ *
+ *  Created on: Apr 22, 2024
+ *      Author: emper
+ */
+
+#ifndef INC_CONTROLLER_H_
+#define INC_CONTROLLER_H_
+
+#include "main.h"
+#include "Encoder.h"
+
+typedef struct _PIDStructure
+{
+	float Kp;			//	Kp
+	float Ki;			//	Ki
+	float Kd;			//	Kd
+
+	float Error;		//	Current Error
+	float Error_1;		//	First Previous Error
+	float Error_2;		//	Second Previous Error
+
+	float Command;			//	Current Output
+	float Command_1;		//	Previous Output
+}PIDStructureTypeDef;
+
+void PIDPositionController_Init(PIDStructureTypeDef* PID,float Kp ,float Ki , float Kd);
+void PIDController_Command(PIDStructureTypeDef* PID,QEIStructureTypeDef* Feedback , float setpoint);
+
+
+#endif /* INC_CONTROLLER_H_ */

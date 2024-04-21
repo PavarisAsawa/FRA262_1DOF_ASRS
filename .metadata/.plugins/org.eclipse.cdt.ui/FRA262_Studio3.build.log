@@ -1,7 +1,6 @@
-15:16:06 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+01:38:55 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/Encoder.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Encoder.d" -MT"Core/Src/Encoder.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Encoder.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/Controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/Controller.d" -MT"Core/Src/Controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Controller.o"
 arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: FRA262_Studio3.elf
  
@@ -14,5 +13,5 @@ Finished building: default.size.stdout
 Finished building: FRA262_Studio3.list
  
 
-15:16:07 Build Finished. 0 errors, 0 warnings. (took 1s.551ms)
+01:38:57 Build Finished. 0 errors, 0 warnings. (took 1s.44ms)
 

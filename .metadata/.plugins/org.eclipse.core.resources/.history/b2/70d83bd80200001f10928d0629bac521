@@ -8,6 +8,7 @@
 #include "Encoder.h"
 #include "main.h"
 
+extern uint64_t micros;				// Find time from main.c
 uint16_t resolution = 8192; 		// pulse / revolution
 uint8_t lead = 16;					// Lead of Ball screw = 16 mm
 

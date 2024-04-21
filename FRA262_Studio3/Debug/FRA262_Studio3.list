@@ -37,15 +37,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_rnglists 00000c86  00000000  00000000  00035f50  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  00025876  00000000  00000000  00036bd6  2**0
+ 17 .debug_macro  00001ca4  00000000  00000000  00036bd6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   000128ed  00000000  00000000  0005c44c  2**0
+ 18 .debug_line   000128ed  00000000  00000000  0003887a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000f7ce4  00000000  00000000  0006ed39  2**0
+ 19 .debug_str    000f7ce4  00000000  00000000  0004b167  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  00004578  00000000  00000000  00166a20  2**2
+ 20 .debug_frame  00004578  00000000  00000000  00142e4c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000007b  00000000  00000000  0016af98  2**0
+ 21 .debug_line_str 0000007b  00000000  00000000  001473c4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1224,7 +1224,7 @@ Disassembly of section .text:
  8000f6a:	bf00      	nop
 
 08000f6c <QEIEncoder_Init>:
-extern uint64_t micros;				// Find time from main.c
+
 uint16_t resolution = 8192; 		// pulse / revolution
 uint8_t lead = 16;					// Lead of Ball screw = 16 mm
 
@@ -2205,7 +2205,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)				//	External Interrupt
  80015d4:	af00      	add	r7, sp, #0
  80015d6:	4603      	mov	r3, r0
  80015d8:	80fb      	strh	r3, [r7, #6]
-	if(GPIO_Pin == GPIO_PIN_13)
+	if(GPIO_Pin == GPIO_PIN_13)			// Blue Switch
  80015da:	88fb      	ldrh	r3, [r7, #6]
  80015dc:	f5b3 5f00 	cmp.w	r3, #8192	; 0x2000
  80015e0:	d102      	bne.n	80015e8 <HAL_GPIO_EXTI_Callback+0x18>
