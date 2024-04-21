@@ -16,9 +16,9 @@ void PIDPositionController_Init(PIDStructureTypeDef* PID,float Kp ,float Ki , fl
 	PID->Kp = Kp;
 	PID->Ki = Ki;
 	PID->Kd = Kd;
-	PID->Error[0] = 0;
-	PID->Error[1] = 0;
-	PID->Error[2] = 0;
+	PID->Error = 0;
+	PID->Error_1 = 0;
+	PID->Error_2 = 0;
 	PID->Command = 0;
 	PID->Command_1 = 0;
 }
@@ -32,9 +32,9 @@ void PIDController_Command(PIDStructureTypeDef* PID,QEIStructureTypeDef* Feedbac
 	A2 = Kd; */
 
 	PID->Command = PID->Command_1 +
-			((PID->Kp + PID->Ki + PID->Kd)*PID->Error[0])
-			- ((PID->Kp+(2*PID->Kd))*PID->Error[1])
-			+ (PID->Kd*PID->Error[2]);
+			((PID->Kp + PID->Ki + PID->Kd)*PID->Error)
+			- ((PID->Kp+(2*PID->Kd))*PID->Error_1)
+			+ (PID->Kd*PID->Error_2);
 	// Implement PID Velocity Form Algorithm
 
 
@@ -43,6 +43,6 @@ void PIDController_Command(PIDStructureTypeDef* PID,QEIStructureTypeDef* Feedbac
 
 	/* Update Variable */
 	PID->Command_1 = PID->Command;
-	PID->Error[2] = PID->Error[1];
-	PID->Error[1] = PID->Error[0];
+	PID->Error_2 = PID->Error_1;
+	PID->Error_1 = PID->Error;
 }

@@ -17,7 +17,7 @@ typedef struct _PIDStructure
 	float Ki;			//	Ki
 	float Kd;			//	Kd
 
-	float Error[3];
+	float Error[3];		//	 Error
 	/*	[ 0 ] : Current Error
 	 *	[ 1 ] : First Previous Error
 	 *	[ 2 ] : Second Previous Error

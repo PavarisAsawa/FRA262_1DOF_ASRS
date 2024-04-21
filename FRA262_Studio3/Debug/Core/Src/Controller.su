@@ -1,2 +1,0 @@
-../Core/Src/Controller.c:12:6:PIDPositionController_Init	24	static
-../Core/Src/Controller.c:24:6:PIDController_Command	24	static
