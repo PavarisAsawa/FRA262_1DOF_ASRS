@@ -345,12 +345,12 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)	// Timer Interupt
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)	// Timer Interrupt
 {
 	if(htim == &htim2)
 	{
 		_micros += 1000;
-		QEIEncoder_Update(&QEI,micros());
+		QEIEncoder_Update(&QEI,&htim5,micros());
 	}
 }
 

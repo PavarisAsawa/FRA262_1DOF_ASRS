@@ -25,7 +25,7 @@ void PIDPositionController_Init(PIDStructureTypeDef* PID,float Kp ,float Ki , fl
 
 void PIDController_Command(PIDStructureTypeDef* PID,QEIStructureTypeDef* Feedback,float setpoint)
 {
-	PID->Error = setpoint - Feedback->LinearPosition;
+	PID->Error[0] = setpoint - Feedback->LinearPosition;
 	/* y[n] = y[n-1] + A0 * x[n] + A1 * x[n-1] + A2 * x[n-2]
 	A0 = Kp + Ki + Kd;
 	A1 = -Kp - (2 * Kd);
