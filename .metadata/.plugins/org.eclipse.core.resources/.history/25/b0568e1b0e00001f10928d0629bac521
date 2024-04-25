@@ -1,0 +1,22 @@
+/*
+ * Controller.c
+ *
+ *  Created on: Apr 22, 2024
+ *      Author: emper
+ */
+
+#include "Encoder.h"
+#include "Controller.h"
+#include "main.h"
+
+void PIDPositionController_Init(PIDStructureTypeDef* PID,float Kp ,float Ki , float Kd)
+{
+	PID->Kp = Kp;
+	PID->Ki = Ki;
+	PID->Kd = Kd;
+}
+
+void PIDPositionController_Command(PIDStructureTypeDef* PID,QEIStructureTypeDef* Feedback,float setpoint)
+{
+	PID->Error = setpoint - Feedback->LinearPosition;
+}

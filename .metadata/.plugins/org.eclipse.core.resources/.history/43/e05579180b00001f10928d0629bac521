@@ -1,0 +1,27 @@
+/*
+ * Controller.h
+ *
+ *  Created on: Apr 22, 2024
+ *      Author: emper
+ */
+
+#ifndef INC_CONTROLLER_H_
+#define INC_CONTROLLER_H_
+
+#include "main.h"
+
+typedef struct _PIDStructure
+{
+	float Kp;			//	Kp
+	float Ki;			//	Ki
+	float Kd;			//	Kd
+
+	float error			//	Current Error
+	float error_1;		//	First Previous Error
+	float error_2;		//	Second Previous Error
+
+	float cmd;			//	Current Output
+	float cmd_1;		//	Previous Output
+}PIDStructureTypeDef;
+
+#endif /* INC_CONTROLLER_H_ */

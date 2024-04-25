@@ -18,12 +18,12 @@ void QEIEncoder_Init(QEIStructureTypeDef* QEIdata,TIM_HandleTypeDef* Encoder_tim
 	HAL_TIM_Encoder_Start(QEIdata->EncoderTIM, TIM_CHANNEL_ALL);		// Initialize Encoder Timer
 }
 
-void QEIEncoder_Update(QEIStructureTypeDef* QEIdata, uint64_t current_time)
+void QEIEncoder_Update(QEIStructureTypeDef* QEIdata,TIM_HandleTypeDef* EncoderTIM ,uint64_t current_time)
 {
 	static float tempVel[2] = {0};			// For Estimate Acceleration
 
 	QEIdata->TimeStamp[0] = current_time; 						// index[0] = new time
-	QEIdata->Position[0] = __HAL_TIM_GET_COUNTER(QEIdata->EncoderTIM);	// index[0] = new Position
+	QEIdata->Position[0] = __HAL_TIM_GET_COUNTER(EncoderTIM);	// index[0] = new Position
 
 	int64_t diffPosition = QEIdata->Position[0] - QEIdata->Position[1];			// position [pulse]
 	float diffTime = (QEIdata->TimeStamp[0]-QEIdata->TimeStamp[1]) * 0.000001; 	// time [seconds]
