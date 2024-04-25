@@ -1,0 +1,41 @@
+2024-04-24 18:48:17,487 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2024-04-24 18:48:28,462 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2024-04-24 18:48:30,305 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 720227264 Bytes (1073741824)
+2024-04-24 18:48:32,455 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 753351352 Bytes (1073741824)
+2024-04-24 18:48:33,098 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8G4
+2024-04-24 18:48:33,099 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8G4
+2024-04-24 18:48:33,099 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: TIM1_8G4
+2024-04-24 18:48:33,099 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: SYS
+2024-04-24 18:48:33,099 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: RCC
+2024-04-24 18:48:33,099 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: NVIC
+2024-04-24 18:48:33,099 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: USART
+2024-04-24 18:48:33,100 [INFO] BlockDiagram:2759 - set Specific Code input for plugin: GPIO
+2024-04-24 18:48:33,103 [INFO] CodeGenerator:807 - code generatio: config db path: C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.10.0.202311202037\\db\
+2024-04-24 18:48:33,584 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\MXTmpFiles\license.tmp_save
+2024-04-24 18:48:34,208 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\MXTmpFiles\license.tmp
+2024-04-24 18:48:34,356 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\MXTmpFiles\gpio.tmp_save
+2024-04-24 18:48:34,536 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\MXTmpFiles\gpio.tmp
+2024-04-24 18:48:35,088 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\Core\Src\stm32g4xx_it.c_save
+2024-04-24 18:48:35,272 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\Core\Src\stm32g4xx_it.c
+2024-04-24 18:48:35,301 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\Core\Inc\stm32g4xx_it.h_save
+2024-04-24 18:48:35,391 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\Core\Inc\stm32g4xx_it.h
+2024-04-24 18:48:35,429 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\Core\Src\stm32g4xx_hal_msp.c_save
+2024-04-24 18:48:35,578 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\Core\Src\stm32g4xx_hal_msp.c
+2024-04-24 18:48:35,594 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\MXTmpFiles\system.tmp_save
+2024-04-24 18:48:35,665 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\MXTmpFiles\system.tmp
+2024-04-24 18:48:35,702 [INFO] CodeEngine:311 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\Core\Inc\stm32g4xx_hal_conf.h_save
+2024-04-24 18:48:35,803 [INFO] CodeEngine:335 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\Core\Inc\stm32g4xx_hal_conf.h
+2024-04-24 18:48:35,833 [WARN] IPConfigManager:2946 - Warning: the RefConfig RCC_CommonPeriphClockConfig is not available in your config.xml file
+2024-04-24 18:48:35,838 [WARN] IPConfigManager:3440 - IP not found : TIM
+2024-04-24 18:48:35,839 [WARN] CodeGenerator:3939 - IP not found : null
+2024-04-24 18:48:35,870 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\Core\Inc\main.h_save
+2024-04-24 18:48:35,998 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\Core\Inc\main.h
+2024-04-24 18:48:36,029 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\Core\Src\main.c_save
+2024-04-24 18:48:36,266 [INFO] CodeEngine:279 - Generated code: C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\Core\Src\main.c
+2024-04-24 18:48:37,010 [INFO] ProjectBuilder:3076 - Time for Copy HAL[1] : 340mS.
+2024-04-24 18:48:37,021 [INFO] ProjectBuilder:4485 - Project Generator version: 4.2.0-B44
+2024-04-24 18:48:37,328 [INFO] ConfigFileManager:1495 - The Die is : DIE469
+2024-04-24 18:48:37,360 [INFO] ApiDbMcu:508 - Load IP Config File for FATFS
+2024-04-24 18:48:37,378 [INFO] ApiDbMcu:508 - Load IP Config File for FREERTOS
+2024-04-24 18:48:37,397 [INFO] ApiDbMcu:508 - Load IP Config File for USBPD
+2024-04-24 18:48:37,421 [INFO] ApiDbMcu:508 - Load IP Config File for USB_Device
