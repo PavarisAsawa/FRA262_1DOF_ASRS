@@ -1,0 +1,29 @@
+/*
+ * Joystick.c
+ *
+ *  Created on: Apr 27, 2024
+ *      Author: emper
+ */
+
+#include "main.h"
+#include "Joystick.h"
+
+/*		PIN - LIST		*/
+/*
+	A	:	PB10
+	B	:	PB4
+	C	:	PB5
+	D	:	PA10
+*/
+
+void Joystick_UpdateValue(JoystickStructureTypeDef joystick)
+{
+	static uint16_t tempPIN[4] = {1};			//	OLD Value OF Push Switch
+	if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN10) == 1)	tempPIN[A] = 0;		//	IF SWITCH [A] PUSHED
+	if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN4) == 1)		tempPIN[B] = 0;		//	IF SWITCH [B] PUSHED
+	if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN5) == 1)		tempPIN[C] = 0;		//	IF SWITCH [C] PUSHED
+	if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN10) == 1)	tempPIN[D] = 0;		//	IF SWITCH [D] PUSHED
+
+
+
+}

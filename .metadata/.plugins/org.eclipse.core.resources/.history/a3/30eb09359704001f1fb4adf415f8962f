@@ -1,0 +1,18 @@
+/*
+ * Joystick.c
+ *
+ *  Created on: Apr 27, 2024
+ *      Author: emper
+ */
+
+#include "main.h"
+#include "Joystick.h"
+
+extern GPIO_TypeDef GPIOB;
+extern uint16_t GPIO_PIN_10;
+
+void Joystick_UpdateValue(JoystickStructureTypeDef joystick)
+{
+	static uint16_t tempPIN[4] = {1};
+
+}

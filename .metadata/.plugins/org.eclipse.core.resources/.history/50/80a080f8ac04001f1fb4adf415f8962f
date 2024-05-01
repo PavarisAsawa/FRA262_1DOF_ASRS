@@ -1,0 +1,56 @@
+/*
+ * ModeHandler.c
+ *
+ *  Created on: Apr 27, 2024
+ *      Author: emper
+ */
+
+#include "ModeHandler.h"
+
+float MAX_SPEED = 200;
+extern TIM_HandleTypeDef htim4;
+
+void Jog_mode(JoystickStructureTypeDef *joystick,QEIStructureTypeDef *QEI)
+{
+	static uint8_t POINT = 0;
+	if(POINT > 4) POINT = 4;
+
+	Joystick_UpdateValue(joystick);
+	if(joystick->Y < 2146 && joystick->Y >1950)
+	{
+		__HAL_TIM_SET_COMPARE(&htim4,TIM_CHANNEL_2,0);
+	}
+	else if(joystick->Y > 2146)
+	{
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_4, SET);
+		__HAL_TIM_SET_COMPARE(&htim4,TIM_CHANNEL_2, (uint16_t)(((joystick->Y-2000)*MAX_SPEED)/2000));
+	}
+	else if(joystick->Y < 1950)
+	{
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_4, RESET);
+		__HAL_TIM_SET_COMPARE(&htim4,TIM_CHANNEL_2,(uint16_t)(((1975-joystick->Y)*MAX_SPEED)/1975) );
+	}
+
+	if(joystick->PIN[1] == 1)
+	{
+		joystick->PointPosition[POINT] = QEI->LinearPosition;
+		POINT++;
+	}
+
+
+}
+
+void Point_mode(PIDStructureTypeDef *PID , QEIStructureTypeDef *QEI,JoystickStructureTypeDef *joystick)
+{
+
+}
+
+void Motor_Control(int32_t cmd)
+{
+	if(cmd > 0) HAL_GPIO_WritePin(GPIOC, GPIO_PIN_4, SET);
+	else if (cmd < 0)  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_4, RESET);
+
+	__HAL_TIM_SET_COMPARE(&htim4,TIM_CHANNEL_2,fabs(cmd));
+}
+
+

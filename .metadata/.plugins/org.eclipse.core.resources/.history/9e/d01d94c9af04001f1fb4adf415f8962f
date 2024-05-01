@@ -1,0 +1,73 @@
+/*
+ * Joystick.c
+ *
+ *  Created on: Apr 27, 2024
+ *      Author: emper
+ */
+
+#include "main.h"
+#include "Joystick.h"
+
+/*		PIN - LIST		*/
+/*
+	A	:	PB10
+	B	:	PB4
+	C	:	PB5
+	D	:	PA10
+*/
+
+void Joystick_UpdateValue(JoystickStructureTypeDef* joystick,QEIStructureTypeDef* QEI)
+{
+
+	/*			Push Button			*/
+	static uint16_t tempSTATE[4] = {1,1,1,1};
+	static uint64_t SUMX;
+	static uint64_t SUMY;
+	static int8_t POINT = 0;
+	if(POINT > 4) POINT = 4;
+	else if(POINT <= 0) POINT = 0;
+	SUMX = 0;
+	SUMY = 0;
+	/* Update STATE Value */
+
+	if(!tempSTATE[A] && HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10))	joystick->PIN[A] = 1;
+	else joystick->PIN[A] = 0;
+
+	if(!tempSTATE[B] && HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4))	joystick->PIN[B] = 1;
+	else joystick->PIN[B] = 0;
+
+	if(!tempSTATE[C] && HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5))	joystick->PIN[C] = 1;
+	else joystick->PIN[C] = 0;
+
+	if(!tempSTATE[D] && HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10))	joystick->PIN[D] = 1;
+	else joystick->PIN[D] = 0;
+
+	tempSTATE[A] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10);		//	IF SWITCH [A] PUSHED
+	tempSTATE[B] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);			//	IF SWITCH [B] PUSHED
+	tempSTATE[C] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5);			//	IF SWITCH [C] PUSHED
+	tempSTATE[D] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);		//	IF SWITCH [D] PUSHED
+
+	if(joystick->PIN[B] == 1)
+	{
+		joystick->PointPosition[POINT] = QEI->LinearPosition;
+		POINT++;
+	}
+	else if(joystick->PIN[D] == 1)
+	{
+		joystick->PointPosition[POINT] = 0;
+		POINT--;
+	}
+
+	/*			Joy			*/
+	for(uint8_t i = 0 ; i < 100 ; i ++)
+	{
+		SUMX += joystick->XYBuffer[2*i];
+		SUMY += joystick->XYBuffer[(2*i)+1];
+
+	}
+
+	joystick->X = SUMX/100;
+	joystick->Y = SUMY/100;
+
+
+}

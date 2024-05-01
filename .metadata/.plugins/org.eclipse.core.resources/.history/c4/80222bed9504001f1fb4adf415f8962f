@@ -1,0 +1,15 @@
+/*
+ * Joystick.c
+ *
+ *  Created on: Apr 27, 2024
+ *      Author: emper
+ */
+
+#include "main.h"
+#include "Joystick.h"
+
+void Joystick_UpdateValue(JoystickStructureTypeDef joystick)
+{
+	static uint16_t tempPIN[4] = {0};
+	tempPIN[A] = 0;
+}

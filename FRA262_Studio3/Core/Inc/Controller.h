@@ -13,22 +13,31 @@
 
 typedef struct _PIDStructure
 {
-	float Kp;			//	Kp
-	float Ki;			//	Ki
-	float Kd;			//	Kd
+	/*	Forward UP		*/
+	float FWKp;			//	Kp
+	float FWKi;			//	Ki
+	float FWKd;			//	Kd
+
+	/*	Backward DOWN	*/
+	float BWKp;			//	Kp
+	float BWKi;			//	Ki
+	float BWKd;			//	Kd
 
 	float Error[3];
 	/*	[ 0 ] : Current Error
 	 *	[ 1 ] : First Previous Error
 	 *	[ 2 ] : Second Previous Error
 	 */
-
 	float Command;			//	Current Output
 	float Command_1;		//	Previous Output
+
 }PIDStructureTypeDef;
 
-void PIDPositionController_Init(PIDStructureTypeDef* PID,float Kp ,float Ki , float Kd);
-void PIDController_Command(PIDStructureTypeDef* PID,QEIStructureTypeDef* Feedback , float setpoint);
+void PIDController_Init(PIDStructureTypeDef* PID,float FWKp ,float Ki , float FWKd, float BWKp ,float BWKi , float BWKd);
+void PIDControllerPosition_Command(PIDStructureTypeDef* PID,QEIStructureTypeDef* Feedback , float setpoint);
+void PIDControllerVelocity_Command(PIDStructureTypeDef* PID,QEIStructureTypeDef* Feedback , float setpoint);
+void PIDControllerCascade_Command(PIDStructureTypeDef *PIDposition , PIDStructureTypeDef *PIDvelocity ,QEIStructureTypeDef *QEI , float setpoint);
+void PIDControllerCascade_Trajectory(PIDStructureTypeDef *PIDposition , PIDStructureTypeDef *PIDvelocity ,QEIStructureTypeDef *QEI , TrajectoryTypeDef *Traject);
 
 
 #endif /* INC_CONTROLLER_H_ */

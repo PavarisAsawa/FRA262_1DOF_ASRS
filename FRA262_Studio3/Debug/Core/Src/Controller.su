@@ -1,2 +1,5 @@
-../Core/Src/Controller.c:14:6:PIDPositionController_Init	24	static
-../Core/Src/Controller.c:26:6:PIDController_Command	24	static
+../Core/Src/Controller.c:16:6:PIDController_Init	40	static
+../Core/Src/Controller.c:34:6:Motor_Control	32	static
+../Core/Src/Controller.c:43:6:PIDControllerPosition_Command	24	static
+../Core/Src/Controller.c:77:6:PIDControllerVelocity_Command	24	static
+../Core/Src/Controller.c:112:6:PIDControllerCascade_Command	24	static

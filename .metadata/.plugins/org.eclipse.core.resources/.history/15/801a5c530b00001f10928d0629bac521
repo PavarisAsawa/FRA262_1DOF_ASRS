@@ -1,9 +1,0 @@
-/*
- * Controller.c
- *
- *  Created on: Apr 22, 2024
- *      Author: emper
- */
-
-#include "Encoder.h"
-#include "main.h"
