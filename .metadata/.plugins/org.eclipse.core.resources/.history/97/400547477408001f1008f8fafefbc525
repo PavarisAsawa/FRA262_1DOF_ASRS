@@ -1,0 +1,31 @@
+/*
+ * QuinticTrajectory.c
+ *
+ *  Created on: May 2, 2024
+ *      Author: emper
+ */
+
+#include "QuinticTrajectory.h"
+
+typedef struct Quintic
+{
+	// define setpoint
+	float Position;
+	float Velocity;
+	float Acceleration;
+
+	// define constrain
+	float v;	// max v
+	float a;	// max a
+
+	float t;	// time to calculate
+
+	float Pi;	//init position
+	float Pf;	//final position
+
+	float a[6];	// Coefficient
+
+	uint8_t FLAG;
+}QuinticTypeDef;
+
+void QuinticTrajectory_init()

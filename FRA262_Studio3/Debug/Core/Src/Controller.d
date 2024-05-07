@@ -31,7 +31,8 @@ Core/Src/Controller.o: ../Core/Src/Controller.c ../Core/Inc/Encoder.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
- ../Core/Inc/Controller.h ../Core/Inc/Encoder.h ../Core/Inc/main.h
+ ../Core/Inc/Controller.h ../Core/Inc/Encoder.h \
+ ../Core/Inc/QuinticTrajectory.h ../Core/Inc/main.h
 ../Core/Inc/Encoder.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
@@ -68,4 +69,5 @@ Core/Src/Controller.o: ../Core/Src/Controller.c ../Core/Inc/Encoder.h \
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h:
 ../Core/Inc/Controller.h:
 ../Core/Inc/Encoder.h:
+../Core/Inc/QuinticTrajectory.h:
 ../Core/Inc/main.h:

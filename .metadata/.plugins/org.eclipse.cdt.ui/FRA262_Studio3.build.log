@@ -1,30 +1,10 @@
-01:33:18 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+20:52:36 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:132:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
-  132 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
-      |                             ~~~~~~~~^~~~~~~~~
-      |                                     |
-      |                                     uint16_t * {aka short unsigned int *}
-In file included from ../Core/Inc/stm32g4xx_hal_conf.h:228,
-                 from ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc.h:2242:78: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
- 2242 | HAL_StatusTypeDef       HAL_ADC_Start_DMA(ADC_HandleTypeDef *hadc, uint32_t *pData, uint32_t Length);
-      |                                                                    ~~~~~~~~~~^~~~~
-arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: FRA262_Studio3.elf
- 
 arm-none-eabi-size  FRA262_Studio3.elf 
-arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
    text	   data	    bss	    dec	    hex	filename
-  32332	     28	   2824	  35184	   8970	FRA262_Studio3.elf
+  34364	    108	   3216	  37688	   9338	FRA262_Studio3.elf
 Finished building: default.size.stdout
  
-Finished building: FRA262_Studio3.list
- 
 
-01:33:20 Build Finished. 0 errors, 1 warnings. (took 1s.615ms)
+20:52:36 Build Finished. 0 errors, 0 warnings. (took 503ms)
 

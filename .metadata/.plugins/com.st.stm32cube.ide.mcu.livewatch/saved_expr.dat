@@ -5,3 +5,10 @@ QEI.LinearPosition
 PIDv
 QEI.LinearVelocity
 tempSetpoint
+Trajectory
+quintic
+test
+test2
+HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)
+photoUP
+photoDOWN

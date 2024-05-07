@@ -1,0 +1,33 @@
+/*
+ * Trajectory.h
+ *
+ *  Created on: Apr 29, 2024
+ *      Author: emper
+ */
+
+#ifndef INC_TRAJECTORY_H_
+#define INC_TRAJECTORY_H_
+
+#include "main.h"
+
+typedef struct _TrajectoryStructure{
+	float InitialPosition;
+	float FinalPosition;
+
+
+	float MaximumVelocity;
+	float MaximumAcceleration;
+
+	float AccelerationTime;
+	float AllTime;
+
+	float PositionSetpoint;
+	float VelocitySetpoint;
+	float AccelerationSetpoint;
+
+	uint16_t CASE;
+}TrajectoryTypeDef;
+
+void Trajectory_Init(TrajectoryTypeDef *Traject , float v_max);
+
+#endif /* INC_TRAJECTORY_H_ */

@@ -1,0 +1,56 @@
+/*
+ * QuinticTrajectory.c
+ *
+ *  Created on: May 2, 2024
+ *      Author: emper
+ */
+
+#include "QuinticTrajectory.h"
+
+
+enum
+{
+	READY,CALCULATE,WORKING,FINISH
+}state;
+
+void QuinticTrajectory_init(QuinticTypeDef *q)
+{
+
+}
+
+void QuinticTrajectory_Generator(QuinticTypeDef *q, float pi ,float pf , float tf)
+{
+	static uint8_t dir;
+	switch(q->STATE)
+	{
+	case READY:
+		if(q->Pi != q->Pf) q->STATE = CALCULATE;
+	case CALCULATE:
+		q->t = 0;
+
+		q->Pi = pi;
+		q->Pf = pf;
+		q->tf = tf;
+
+		float s = pf - pi;
+		else dir = 0;
+
+		/*Coefficient Calculated*/
+		q->c[0] = q->Pi;
+		q->c[1] = 0;
+		q->c[2] = 0;
+		q->c[3] = 10.0*s/powf(q->tf,3);
+		q->c[4] = -15.0*s/powf(q->tf,4);
+		q->c[5] = 6.0*s/powf(q->tf,5);
+	case WORKING:
+		q->Position = q->c[0] + q->c[1]*q->t + q->c[2]*powf(q->t,2) + q->c[3]*powf(q->t,3) + q->c[4]*powf(q->t,4) + q->c[5]*powf(q->t,3);
+		q->Velocity = q->c[1] + 2*q->c[2]*q->t + 3*q->c[3]*powf(q->t,2) + 4*q->c[4]*powf(q->t,3) + 5*q->c[5]*powf(q->t,4);
+		q->Acceleration = 2*q->c[2] + 6*q->c[3]*q->t + 12*q->c[4]*powf(q->t,2) + 20*q->c[5]*powf(q->t,3);
+		q->t += 0.001;
+		if(q->t >= tf) q->STATE = FINISH;
+	case FINISH:
+		q->Velocity = 0;
+		q->Acceleration = 0;
+		q->Pi = q->Pf;
+	}
+}

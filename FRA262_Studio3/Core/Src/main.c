@@ -26,6 +26,9 @@
 #include "math.h"
 #include "Joystick.h"
 #include "ModeHandler.h"
+#include <TrapezoidalTrajectory.h>
+#include "QuinticTrajectory.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,8 +63,14 @@ QEIStructureTypeDef QEI;
 PIDStructureTypeDef PIDp;
 PIDStructureTypeDef PIDv;
 JoystickStructureTypeDef Joystick;
+TrajectoryTypeDef Trajectory;
+QuinticTypeDef quintic;
 
 uint64_t test;
+uint64_t test2;
+uint64_t photoUP;
+uint64_t photoDOWN;
+
 uint64_t time;
 float tempSetpoint;
 /* USER CODE END PV */
@@ -131,8 +140,8 @@ int main(void)
 
   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
 
-  float PID_P_up[3] = {1.472 ,0.00000000495, 0}; //{1.472 ,0.00000000495, 0}
-  float PID_P_down[3] = {1.6 ,0.000000067, 0}; //{1.6 ,0.000000067, 0}
+  float PID_P_up[3] = {0.94 ,0.00003, 0}; //{0.84 ,0.0000023, 0};
+  float PID_P_down[3] = {0.94 ,0.00003, 0}; //{1.6 ,0.000000067, 0}
 
   float PID_V_up[3] = {3.7 ,0.0013, 0.00000054}; //{4.38 ,0.005, 0.0000039}  {4.35 ,0.0038, 0.0000039}
   float PID_V_down[3] = {3.4 ,0.00085, 0.00000054};
@@ -142,8 +151,10 @@ int main(void)
   PIDController_Init(&PIDv, PID_V_up[0], PID_V_up[1], PID_V_up[2] , PID_V_down[0], PID_V_down[1], PID_V_down[2]);	// Initialize Velocity Controller
 
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_4, SET);			// SET to UPWARD
-  tempSetpoint = 0;
-  HAL_Delay(2000);
+
+  QuinticTrajectory_Init(&quintic);
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -153,9 +164,13 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  PIDControllerCascade_Command(&PIDp, &PIDv, &QEI,tempSetpoint);
-	  Motor_Control((PIDv.Command));
-//	  Motor_Control(1000);
+//	PIDControllerCascade_Command2(&PIDp, &PIDv, &QEI, quintic.Position, quintic.Velocity);
+//	Motor_Control(PIDv.Command);
+
+	  photoUP = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13);
+	  photoDOWN = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14);
+
+
   }
   /* USER CODE END 3 */
 }
@@ -584,8 +599,20 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PA10 */
-  GPIO_InitStruct.Pin = GPIO_PIN_10;
+  /*Configure GPIO pins : PB13 PB14 */
+  GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PC7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PA9 PA10 */
+  GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -608,7 +635,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)	// Timer Interrupt
 	}
 	if(htim == &htim3) // [1 microseconds]
 	{
-		QEIEncoder_Update(&QEI,&htim5,micros());
+		QEIEncoder_Update(&QEI, &htim5, micros());
+		QuinticTrajectory_Generator(&quintic, QEI.LinearPosition, -500, 2);
 	}
 }
 
@@ -616,26 +644,13 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)				//	External Interrupt
 {
 	if(GPIO_Pin == GPIO_PIN_13)			// Blue Switch
 	{
-//		__HAL_TIM_SET_COMPARE(&htim4,TIM_CHANNEL_2,0);
-//		tempSetpoint = 0;
-//		QEIEncoder_SetHome(&QEI);
-		tempSetpoint = -600;
+
 	}
 }
 
 uint64_t micros()	// System Time
 {
 	return __HAL_TIM_GET_COUNTER(&htim2)+_micros;
-}
-
-void PushBlue_DriveUp()
-{
-	  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13))
-	  {
-		  PIDControllerPosition_Command(&PIDp,&QEI,tempSetpoint);
-		  Motor_Control(PIDp.Command);
-	  }
-	  else Motor_Control(0);
 }
 
 /* USER CODE END 4 */

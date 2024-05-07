@@ -37,7 +37,9 @@ void PIDController_Init(PIDStructureTypeDef* PID,float FWKp ,float Ki , float FW
 void PIDControllerPosition_Command(PIDStructureTypeDef* PID,QEIStructureTypeDef* Feedback , float setpoint);
 void PIDControllerVelocity_Command(PIDStructureTypeDef* PID,QEIStructureTypeDef* Feedback , float setpoint);
 void PIDControllerCascade_Command(PIDStructureTypeDef *PIDposition , PIDStructureTypeDef *PIDvelocity ,QEIStructureTypeDef *QEI , float setpoint);
-void PIDControllerCascade_Trajectory(PIDStructureTypeDef *PIDposition , PIDStructureTypeDef *PIDvelocity ,QEIStructureTypeDef *QEI , TrajectoryTypeDef *Traject);
+void PIDControllerCascade_Command2(PIDStructureTypeDef *PIDposition , PIDStructureTypeDef *PIDvelocity ,QEIStructureTypeDef *QEI , float pf , float vf);
+
+//void PIDControllerCascade_Trajectory(PIDStructureTypeDef *PIDposition , PIDStructureTypeDef *PIDvelocity ,QEIStructureTypeDef *QEI , TrajectoryTypeDef *Traject);
 
 
 #endif /* INC_CONTROLLER_H_ */

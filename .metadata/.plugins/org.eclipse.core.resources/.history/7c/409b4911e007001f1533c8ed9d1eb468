@@ -1,0 +1,98 @@
+/*
+ * Trajectory.c
+ *
+ *  Created on: Apr 29, 2024
+ *      Author: emper
+ */
+
+#include "main.h"
+#include "Trajectory.h"
+
+float tol = 0.005;
+float t_acc = 0.4; // USE 1375 [mm/s^2]
+uint8_t CASE;
+
+enum
+{
+	TRIANGLE,TRAPEZOID
+};
+
+enum
+{
+	READY,WORKING
+};
+
+void Trajectory_Init(TrajectoryTypeDef *Traject , float v_max , float a_max)
+{
+	Traject->MaximumVelocity = v_max;
+	Traject->MaximumAcceleration = a_max;
+	Traject->AccelerationTime = Traject->MaximumVelocity/Traject->MaximumAcceleration;
+}
+
+
+void TrapezoidalTrajectory_Calculator(TrajectoryTypeDef *Traject , float initPos , float finalPos)
+{
+		Traject->AllTime = ((fabs(finalPos - initPos)-Traject->MaximumVelocity*Traject->AccelerationTime)/Traject->MaximumVelocity) + Traject->AccelerationTime;
+		if (2*Traject->AccelerationTime >= Traject->AllTime)
+		{
+			Traject->CASE = TRIANGLE;
+			Traject->AllTime = 2*Traject->AccelerationTime;
+		}
+		else Traject->CASE = TRAPEZOID;
+
+		Traject->InitialPosition = initPos;
+		Traject->FinalPosition = finalPos;
+		Traject->Time = 0;
+}
+
+void TrapezoidalTrajectory_Generator(TrajectoryTypeDef *Traject)		// Need to get time from system
+{
+		Traject->FLAG = WORKING;
+		Traject->Time += 0.001;
+		float AccelerationSetPoint;
+		if(Traject->CASE == TRAPEZOID)
+		{
+			if(Traject->Time <= Traject->AccelerationTime)
+			{
+				Traject->PositionSetpoint = Traject->InitialPosition + 0.5*Traject->MaximumAcceleration*powf(Traject->Time,2);
+				Traject->VelocitySetpoint = Traject->MaximumAcceleration*Traject->Time;
+				Traject->AccelerationSetpoint = Traject->MaximumAcceleration;
+				PositionSetPoint = Traject->PositionSetpoint;
+			}
+			else if(Traject->Time > Traject->AccelerationTime && Traject->Time <= Traject->AllTime - Traject->AccelerationTime)			// Constant Velocity
+			{
+//				Traject->PositionSetpoint = PositionSetPoint + Traject->MaximumVelocity * (Traject->Time-Traject->AccelerationTime);
+				Traject->PositionSetpoint = 0.5*Traject->MaximumAcceleration * powf(Traject->AccelerationTime,2) + Traject->MaximumVelocity*(Traject->Time - Traject->AccelerationTime);
+				Traject->VelocitySetpoint = Traject->MaximumVelocity;
+				Traject->AccelerationSetpoint = 0;
+			}
+			else if(Traject->Time >= Traject->AllTime - Traject->AccelerationTime && Traject->Time <= Traject->AllTime)
+			{
+				Traject->PositionSetpoint = (2*Traject->MaximumAcceleration*Traject->MaximumVelocity*Traject->AllTime - 2*powf(Traject->MaximumVelocity,2) - powf(Traject->MaximumAcceleration,2)*powf(Traject->Time-Traject->AllTime,2))/(2*Traject->MaximumAcceleration);
+				Traject->VelocitySetpoint = Traject->MaximumVelocity-Traject->MaximumAcceleration*Traject->Time;
+				Traject->AccelerationSetpoint = Traject->MaximumVelocity - Traject->MaximumAcceleration*Traject->Time;
+			}
+		}
+		else if(Traject->CASE == TRIANGLE)
+		{
+			if(Traject->Time <= Traject->AccelerationTime)
+			{
+				Traject->PositionSetpoint = Traject->InitialPosition + 0.5*Traject->MaximumAcceleration*powf(Traject->Time,2);
+				Traject->VelocitySetpoint = Traject->MaximumAcceleration*Traject->Time;
+				Traject->AccelerationSetpoint = Traject->MaximumAcceleration;
+			}
+			else if (Traject->Time > Traject->AccelerationTime && Traject->Time < Traject->AllTime)
+			{
+				Traject->PositionSetpoint = (2*Traject->MaximumAcceleration*Traject->MaximumVelocity*Traject->AllTime - 2*powf(Traject->MaximumVelocity,2) - powf(Traject->MaximumAcceleration,2)*powf(Traject->Time-Traject->AllTime,2))/(2*Traject->MaximumAcceleration);
+				Traject->VelocitySetpoint = Traject->MaximumVelocity-Traject->MaximumAcceleration*Traject->Time;
+				Traject->AccelerationSetpoint = -1*Traject->MaximumAcceleration;
+			}
+		}
+		else
+		{
+			Traject->VelocitySetpoint = 0;
+			Traject->AccelerationSetpoint = 0;
+			Traject->FLAG = READY;
+		}
+}
+

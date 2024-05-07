@@ -1,5 +1,6 @@
-../Core/Src/Controller.c:16:6:PIDController_Init	1
-../Core/Src/Controller.c:34:6:Motor_Control	3
-../Core/Src/Controller.c:43:6:PIDControllerPosition_Command	6
-../Core/Src/Controller.c:77:6:PIDControllerVelocity_Command	5
-../Core/Src/Controller.c:112:6:PIDControllerCascade_Command	1
+../Core/Src/Controller.c:17:6:PIDController_Init	1
+../Core/Src/Controller.c:35:6:Motor_Control	3
+../Core/Src/Controller.c:44:6:PIDControllerPosition_Command	6
+../Core/Src/Controller.c:78:6:PIDControllerVelocity_Command	5
+../Core/Src/Controller.c:113:6:PIDControllerCascade_Command	1
+../Core/Src/Controller.c:119:6:PIDControllerCascade_Command2	1

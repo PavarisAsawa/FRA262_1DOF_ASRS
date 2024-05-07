@@ -1,0 +1,10 @@
+/*
+ * QuinticTrajectory.c
+ *
+ *  Created on: May 2, 2024
+ *      Author: emper
+ */
+
+#include "QuinticTrajectory.h"
+
+void Quin
