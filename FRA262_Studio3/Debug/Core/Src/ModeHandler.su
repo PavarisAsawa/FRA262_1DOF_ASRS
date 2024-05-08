@@ -1,2 +1,2 @@
-../Core/Src/ModeHandler.c:14:6:Jog_mode	16	static
-../Core/Src/ModeHandler.c:35:6:Point_mode	24	static
+../Core/Src/ModeHandler.c:15:6:Jog_mode	24	static
+../Core/Src/ModeHandler.c:36:6:Point_mode	24	static

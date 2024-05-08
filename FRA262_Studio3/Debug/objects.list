@@ -1,6 +1,8 @@
+"./Core/Src/BaseSystem.o"
 "./Core/Src/Controller.o"
 "./Core/Src/Encoder.o"
 "./Core/Src/Joystick.o"
+"./Core/Src/ModbusRTU.o"
 "./Core/Src/ModeHandler.o"
 "./Core/Src/QuinticTrajectory.o"
 "./Core/Src/TrapezoidalTrajectory.o"

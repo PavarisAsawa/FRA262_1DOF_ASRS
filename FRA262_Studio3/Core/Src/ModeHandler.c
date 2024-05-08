@@ -9,6 +9,7 @@
 #include "Controller.h"
 
 float MAX_SPEED = 200;
+uint64_t _BACKDRIVE_FACTOR = 20;
 extern TIM_HandleTypeDef htim4;
 
 void Jog_mode(JoystickStructureTypeDef *joystick , QEIStructureTypeDef *QEI)
@@ -17,18 +18,18 @@ void Jog_mode(JoystickStructureTypeDef *joystick , QEIStructureTypeDef *QEI)
 	Joystick_UpdateValue(joystick,QEI);
 	if(joystick->Y < 2146 && joystick->Y >1950)
 	{
-		__HAL_TIM_SET_COMPARE(&htim4,TIM_CHANNEL_2,0);
+		Motor_Control(_BACKDRIVE_FACTOR);
 	}
 	else if(joystick->Y > 2146)
 	{
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_4, SET);
-		__HAL_TIM_SET_COMPARE(&htim4,TIM_CHANNEL_2, (uint16_t)(((joystick->Y-2000)*MAX_SPEED)/2000));
+		if( (uint16_t)(((joystick->Y-2000)*MAX_SPEED)/2000) > _BACKDRIVE_FACTOR) Motor_Control((uint16_t)(((joystick->Y-2000)*MAX_SPEED)/2000));
+		else Motor_Control(_BACKDRIVE_FACTOR);
 	}
 	else if(joystick->Y < 1950)
 	{
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_4, RESET);
-		__HAL_TIM_SET_COMPARE(&htim4,TIM_CHANNEL_2,(uint16_t)(((1975-joystick->Y)*MAX_SPEED)/1975) );
+		Motor_Control(-(uint16_t)(((1975-joystick->Y)*MAX_SPEED)/1975));
 	}
+	else Motor_Control(_BACKDRIVE_FACTOR);
 
 }
 

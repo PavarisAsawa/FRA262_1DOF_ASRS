@@ -12,3 +12,4 @@ test2
 HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)
 photoUP
 photoDOWN
+registerFrame[0x00].U16
