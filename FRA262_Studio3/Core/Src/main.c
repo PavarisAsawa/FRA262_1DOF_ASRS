@@ -74,6 +74,14 @@ QuinticTypeDef quintic;
 ModbusHandleTypedef hmodbus;
 u16u8_t registerFrame[200];
 
+/* ENUM FOR STATE MACHINE */
+uint16_t STATE;
+FlagTypeDef Flag;
+
+enum
+{
+	IDLE ,SETHOME ,JOG , POINT
+};
 
 uint64_t test;
 uint64_t test2;
@@ -82,6 +90,7 @@ uint64_t photoDOWN;
 
 uint64_t time;
 float tempSetpoint;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -173,6 +182,8 @@ int main(void)
 
   QuinticTrajectory_Init(&quintic);
 
+  STATE = IDLE;
+
 
   /* USER CODE END 2 */
 
@@ -183,16 +194,26 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	  Modbus_Protocal_Worker();
-//	  Heartbeat();
-//	  Jog_mode(&Joystick, &QEI);
+	  /* Protocol Part */
+	  status.StateFrame = registerFrame[0x01].U16;
+	  Modbus_Protocal_Worker();
+	  Heartbeat();
+	  Routine(&QEI);
+	  switch (STATE) {
+		case IDLE:
+			STATE = SETHOME;
+			break;
+		case SETHOME:
+			SetHome_mode(&Flag, &QEI);
+			if(Flag.setHome == 0)	// If finish sethome
+			{
+				STATE = JOG;
+			}
+		case JOG:
+			Jog_mode(&Joystick, &QEI);
+			break;
 
-//	  photoUP = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13);
-//	  photoDOWN = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14);
-
-//	  PIDControllerCascade_Command2(&PIDp, &PIDv, &QEI, quintic.Position, quintic.Velocity);
-//	  Motor_Control(PIDv.Command);
-
+	}
 
   }
   /* USER CODE END 3 */
@@ -709,7 +730,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)				//	External Interrupt
 {
 	if(GPIO_Pin == GPIO_PIN_13)			// Blue Switch
 	{
-
 	}
 }
 

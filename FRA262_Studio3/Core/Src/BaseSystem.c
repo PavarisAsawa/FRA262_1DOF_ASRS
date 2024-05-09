@@ -9,45 +9,37 @@
 State status;
 ShelvePosition shelve;
 GetValue Value;
-Z_Value Z;
 
 void Heartbeat(){
 	static uint64_t timestamp = 0;
-		 	  if(HAL_GetTick() >= timestamp)
-		 	  {
-		 		  timestamp += 200;
-		 		  registerFrame[0x00].U16 = 22881;
-		 	  }
+	  if(HAL_GetTick() >= timestamp)
+	  {
+		  timestamp += 200;
+		  registerFrame[0x00].U16 = 22881;
+	  }
 }
 
-void Routine(){
+void Routine(QEIStructureTypeDef *QEI){
 	static uint64_t timestamp2 = 0;
-		if(HAL_GetTick() >= timestamp2) //ส่งค่าพวกนี้หลังจาก BaseSytem อ่าน Heartbeat ทุกๆ 200 ms
-		{
-		timestamp2 += 200;
-		if (registerFrame[0x00].U16 == 18537){
-			status.HeartFlag = 1 ; // ได้รับค่าจาก Heartbeat Protocal
-		//BaseSytem Read
+	if(HAL_GetTick() >= timestamp2 && registerFrame[0x00].U16 == 18537) //ส่งค่าพวกนี้หลังจาก BaseSytem อ่าน Heartbeat ทุกๆ 200 ms
+	{
+	timestamp2 += 200;
 
-		//เช็คค่า Lead Switch ว่าอันไหนติด
-		//if (lead switch1 == 1){
-		registerFrame[0x04].U16 = 0b0000;
-		registerFrame[0x04].U16 = 0b0010;
-		//}
-		//else if (lead switch2 == 1){
+	//Check Lead
+	//if (lead switch1 == 1){
+	registerFrame[0x04].U16 = 0b0000;
+	registerFrame[0x04].U16 = 0b0010;
+	//}
+	//else if (lead switch2 == 1){
 //		registerFrame[0x04].U16 = 0b0000;
 //		registerFrame[0x04].U16 = 0b0001;//Gripper Movement Actual Status = 'Lead Switch 2 Status'
-		//}
-		Z.position = 190;
-		Z.speed = 200;
-		Z.acce = 210;
+	//}
 
-		registerFrame[0x10].U16 = status.Z_Status; //Z-axis Moving Status
-		registerFrame[0x11].U16 = Z.position; //Z-axis Actual Position = 19 ค่าจริง*10
-		registerFrame[0x12].U16 = Z.speed; //Z-axis Actual Speed = 20
-		registerFrame[0x13].U16 = Z.acce; //Z-axis Acceleration = 21
-		registerFrame[0x40].U16 = 22*10; //X-axis Actual Position = 22
-		}
+	registerFrame[0x10].U16 = status.Z_Status; //Z-axis Moving Status
+	registerFrame[0x11].U16 = (int16_t)(QEI->LinearPosition * 10); //Z-axis Actual Position = 19 ค่าจริง*10
+	registerFrame[0x12].U16 = (uint16_t)(QEI->LinearVelocity * 10); //Z-axis Actual Speed = 20
+	registerFrame[0x13].U16 = (uint16_t)(QEI->LinearAcceleration * 10); //Z-axis Acceleration = 21
+	registerFrame[0x40].U16 = 22*10; //X-axis Actual Position = 2
 }
 }
 void VacuumOn_Off(){ // อ่านค่า Vacuum จากการกดปุ่มที่ BaseSytem

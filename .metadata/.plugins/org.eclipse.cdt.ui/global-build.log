@@ -1,9 +1,41 @@
-16:17:16 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+20:48:57 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:160:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
-  160 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
+../Core/Src/main.c:169:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  169 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
+      |                             ~~~~~~~~^~~~~~~~~
+      |                                     |
+      |                                     uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32g4xx_hal_conf.h:228,
+                 from ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc.h:2242:78: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+ 2242 | HAL_StatusTypeDef       HAL_ADC_Start_DMA(ADC_HandleTypeDef *hadc, uint32_t *pData, uint32_t Length);
+      |                                                                    ~~~~~~~~~~^~~~~
+../Core/Src/main.c:177:3: error: too many arguments to function 'QEIEncoder_Init'
+  177 |   QEIEncoder_Init(&QEI,&htim5,80);                                                      // Initialize QEI Encoder
+      |   ^~~~~~~~~~~~~~~
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/Encoder.h:24:6: note: declared here
+   24 | void QEIEncoder_Init(QEIStructureTypeDef* QEIStructure ,TIM_HandleTypeDef* Encoder_tim);
+      |      ^~~~~~~~~~~~~~~
+../Core/Src/main.c:202:11: error: too many arguments to function 'SetHome_mode'
+  202 |           SetHome_mode(&Flag, &QEI, 80);
+      |           ^~~~~~~~~~~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/ModeHandler.h:24:6: note: declared here
+   24 | void SetHome_mode(FlagTypeDef *flag ,QEIStructureTypeDef *QEI);
+      |      ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:58: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+20:49:23 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:169:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  169 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
       |                             ~~~~~~~~^~~~~~~~~
       |                                     |
       |                                     uint16_t * {aka short unsigned int *}
@@ -20,176 +52,22 @@ Finished building target: FRA262_Studio3.elf
 arm-none-eabi-size  FRA262_Studio3.elf 
 arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
    text	   data	    bss	    dec	    hex	filename
-  43000	    620	   5816	  49436	   c11c	FRA262_Studio3.elf
+  43656	    632	   5864	  50152	   c3e8	FRA262_Studio3.elf
 Finished building: default.size.stdout
  
 Finished building: FRA262_Studio3.list
  
-16:23:43 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
-make -j16 all 
-arm-none-eabi-size  FRA262_Studio3.elf 
-   text	   data	    bss	    dec	    hex	filename
-  43000	    620	   5816	  49436	   c11c	FRA262_Studio3.elf
-Finished building: default.size.stdout
- 
-16:26:02 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
-make -j16 all 
-arm-none-eabi-size  FRA262_Studio3.elf 
-   text	   data	    bss	    dec	    hex	filename
-  43000	    620	   5816	  49436	   c11c	FRA262_Studio3.elf
-Finished building: default.size.stdout
- 
-16:28:56 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/stm32g4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32g4xx_hal_msp.d" -MT"Core/Src/stm32g4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_hal_msp.o"
-arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: FRA262_Studio3.elf
- 
-arm-none-eabi-size  FRA262_Studio3.elf 
-arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
-   text	   data	    bss	    dec	    hex	filename
-  43000	    620	   5816	  49436	   c11c	FRA262_Studio3.elf
-Finished building: default.size.stdout
- 
-Finished building: FRA262_Studio3.list
- 
-18:00:59 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
-make -j16 all 
-arm-none-eabi-size  FRA262_Studio3.elf 
-   text	   data	    bss	    dec	    hex	filename
-  43000	    620	   5816	  49436	   c11c	FRA262_Studio3.elf
-Finished building: default.size.stdout
- 
-19:04:43 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:160:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
-  160 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
-      |                             ~~~~~~~~^~~~~~~~~
-      |                                     |
-      |                                     uint16_t * {aka short unsigned int *}
-In file included from ../Core/Inc/stm32g4xx_hal_conf.h:228,
-                 from ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc.h:2242:78: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
- 2242 | HAL_StatusTypeDef       HAL_ADC_Start_DMA(ADC_HandleTypeDef *hadc, uint32_t *pData, uint32_t Length);
-      |                                                                    ~~~~~~~~~~^~~~~
-arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: FRA262_Studio3.elf
- 
-arm-none-eabi-size  FRA262_Studio3.elf 
-arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
-   text	   data	    bss	    dec	    hex	filename
-  44300	    632	   5880	  50812	   c67c	FRA262_Studio3.elf
-Finished building: default.size.stdout
- 
-Finished building: FRA262_Studio3.list
- 
-19:07:09 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:160:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
-  160 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
-      |                             ~~~~~~~~^~~~~~~~~
-      |                                     |
-      |                                     uint16_t * {aka short unsigned int *}
-In file included from ../Core/Inc/stm32g4xx_hal_conf.h:228,
-                 from ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc.h:2242:78: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
- 2242 | HAL_StatusTypeDef       HAL_ADC_Start_DMA(ADC_HandleTypeDef *hadc, uint32_t *pData, uint32_t Length);
-      |                                                                    ~~~~~~~~~~^~~~~
-arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: FRA262_Studio3.elf
- 
-arm-none-eabi-size  FRA262_Studio3.elf 
-arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
-   text	   data	    bss	    dec	    hex	filename
-  44300	    632	   5880	  50812	   c67c	FRA262_Studio3.elf
-Finished building: default.size.stdout
- 
-Finished building: FRA262_Studio3.list
- 
-19:07:21 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
-make -j16 all 
-arm-none-eabi-size  FRA262_Studio3.elf 
-   text	   data	    bss	    dec	    hex	filename
-  44300	    632	   5880	  50812	   c67c	FRA262_Studio3.elf
-Finished building: default.size.stdout
- 
-19:28:32 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+20:52:07 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
-arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: FRA262_Studio3.elf
- 
-arm-none-eabi-size  FRA262_Studio3.elf 
-arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
-   text	   data	    bss	    dec	    hex	filename
-  44452	    632	   5880	  50964	   c714	FRA262_Studio3.elf
-Finished building: default.size.stdout
- 
-Finished building: FRA262_Studio3.list
- 
-19:29:22 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
-make -j16 all 
-arm-none-eabi-size  FRA262_Studio3.elf 
-   text	   data	    bss	    dec	    hex	filename
-  44452	    632	   5880	  50964	   c714	FRA262_Studio3.elf
-Finished building: default.size.stdout
- 
-19:32:26 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
-arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: FRA262_Studio3.elf
- 
-arm-none-eabi-size  FRA262_Studio3.elf 
-arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
-   text	   data	    bss	    dec	    hex	filename
-  44484	    632	   5880	  50996	   c734	FRA262_Studio3.elf
-Finished building: default.size.stdout
- 
-Finished building: FRA262_Studio3.list
- 
-19:34:19 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
-arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: FRA262_Studio3.elf
- 
-arm-none-eabi-size  FRA262_Studio3.elf 
-arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
-   text	   data	    bss	    dec	    hex	filename
-  44520	    640	   5880	  51040	   c760	FRA262_Studio3.elf
-Finished building: default.size.stdout
- 
-Finished building: FRA262_Studio3.list
- 
-19:36:32 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
-arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: FRA262_Studio3.elf
- 
-arm-none-eabi-size  FRA262_Studio3.elf 
-arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
-   text	   data	    bss	    dec	    hex	filename
-  44536	    640	   5880	  51056	   c770	FRA262_Studio3.elf
-Finished building: default.size.stdout
- 
-Finished building: FRA262_Studio3.list
- 
-19:50:43 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
-make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/ModeHandler.c: In function 'Jog_mode':
+../Core/Src/ModeHandler.c:22:17: warning: implicit declaration of function 'Motor_Control' [-Wimplicit-function-declaration]
+   22 |                 Motor_Control(_BACKDRIVE_FACTOR);
+      |                 ^~~~~~~~~~~~~
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:160:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
-  160 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
+../Core/Src/main.c:169:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  169 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
       |                             ~~~~~~~~^~~~~~~~~
       |                                     |
       |                                     uint16_t * {aka short unsigned int *}
@@ -206,17 +84,17 @@ Finished building target: FRA262_Studio3.elf
 arm-none-eabi-size  FRA262_Studio3.elf 
 arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
    text	   data	    bss	    dec	    hex	filename
-  42172	    112	   5808	  48092	   bbdc	FRA262_Studio3.elf
+  43656	    632	   5864	  50152	   c3e8	FRA262_Studio3.elf
 Finished building: default.size.stdout
  
 Finished building: FRA262_Studio3.list
  
-19:51:07 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+20:53:38 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:160:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
-  160 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
+../Core/Src/main.c:169:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  169 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
       |                             ~~~~~~~~^~~~~~~~~
       |                                     |
       |                                     uint16_t * {aka short unsigned int *}
@@ -233,17 +111,24 @@ Finished building target: FRA262_Studio3.elf
 arm-none-eabi-size  FRA262_Studio3.elf 
 arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
    text	   data	    bss	    dec	    hex	filename
-  41084	    108	   5808	  47000	   b798	FRA262_Studio3.elf
+  45000	    640	   5928	  51568	   c970	FRA262_Studio3.elf
 Finished building: default.size.stdout
  
 Finished building: FRA262_Studio3.list
  
-19:51:33 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+20:53:58 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-size  FRA262_Studio3.elf 
+   text	   data	    bss	    dec	    hex	filename
+  45000	    640	   5928	  51568	   c970	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+20:54:45 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:160:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
-  160 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
+../Core/Src/main.c:169:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  169 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
       |                             ~~~~~~~~^~~~~~~~~
       |                                     |
       |                                     uint16_t * {aka short unsigned int *}
@@ -260,17 +145,17 @@ Finished building target: FRA262_Studio3.elf
 arm-none-eabi-size  FRA262_Studio3.elf 
 arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
    text	   data	    bss	    dec	    hex	filename
-  42172	    112	   5808	  48092	   bbdc	FRA262_Studio3.elf
+  45000	    640	   5928	  51568	   c970	FRA262_Studio3.elf
 Finished building: default.size.stdout
  
 Finished building: FRA262_Studio3.list
  
-19:51:59 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+20:55:24 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:160:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
-  160 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
+../Core/Src/main.c:169:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  169 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
       |                             ~~~~~~~~^~~~~~~~~
       |                                     |
       |                                     uint16_t * {aka short unsigned int *}
@@ -287,7 +172,7 @@ Finished building target: FRA262_Studio3.elf
 arm-none-eabi-size  FRA262_Studio3.elf 
 arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
    text	   data	    bss	    dec	    hex	filename
-  41084	    108	   5808	  47000	   b798	FRA262_Studio3.elf
+  44992	    640	   5928	  51560	   c968	FRA262_Studio3.elf
 Finished building: default.size.stdout
  
 Finished building: FRA262_Studio3.list

@@ -1,2 +1,3 @@
-../Core/Src/ModeHandler.c:15:6:Jog_mode	24	static
-../Core/Src/ModeHandler.c:36:6:Point_mode	24	static
+../Core/Src/ModeHandler.c:16:6:Jog_mode	24	static
+../Core/Src/ModeHandler.c:37:6:Point_mode	24	static
+../Core/Src/ModeHandler.c:43:6:SetHome_mode	16	static

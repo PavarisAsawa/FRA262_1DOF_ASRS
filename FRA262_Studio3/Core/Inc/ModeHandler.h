@@ -13,9 +13,17 @@
 #include "Controller.h"
 #include "main.h"
 
+typedef struct FLAG{
+
+	uint8_t setHome;
+	uint8_t Jog;
+}FlagTypeDef;
+
 void Jog_mode(JoystickStructureTypeDef *joystick, QEIStructureTypeDef *QEI);
 void Point_mode(PIDStructureTypeDef *PID , QEIStructureTypeDef *QEI,float setpoint);
-void Motor_Control(int32_t cmd);
+void SetHome_mode(FlagTypeDef *flag ,QEIStructureTypeDef *QEI);
+//void
+
 
 
 

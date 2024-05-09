@@ -10,37 +10,17 @@
 
 
 #include <ModBusRTU.h>
+#include "Encoder.h"
+#include "main.h"
 
 extern ModbusHandleTypedef hmodbus;
 extern u16u8_t registerFrame[200];
-//extern uint16_t HeartFlag;
-//extern uint16_t VacuumState;
-//extern uint16_t GripperState;
-//extern uint16_t GoalPoint;
-//extern uint16_t ShelvePosition_1;
-//extern uint16_t ShelvePosition_2;
-//extern uint16_t ShelvePosition_3;
-//extern uint16_t ShelvePosition_4;
-//extern uint16_t ShelvePosition_5;
-//extern uint16_t PickOder;
-//extern uint16_t PlaceOder;
 
-//void Heartbeat();
-//void Routine();
-//void VacuumOn_Off();
-//void Gripper_Movement();
-//void Set_Shelves();
-//void GetGoalPoint();
-//void RunPointMode();
-//void SetHome();
-//void GetPick_PlaceOrder();
-//void RunJogMode();
 typedef struct {
 	uint16_t speed;
 	uint16_t position;
 	uint16_t acce;
 }Z_Value;
-extern Z_Value Z;
 
 typedef struct {
 	uint16_t GoalPoint;
@@ -72,7 +52,7 @@ extern ShelvePosition shelve;
 
 
 void Heartbeat();
-void Routine();
+void Routine(QEIStructureTypeDef *qei);
 void VacuumOn_Off();
 void Gripper_Movement();
 void Set_Shelves();

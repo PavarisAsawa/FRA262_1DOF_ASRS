@@ -7,6 +7,7 @@
 
 #include "ModeHandler.h"
 #include "Controller.h"
+#include "main.h"
 
 float MAX_SPEED = 200;
 uint64_t _BACKDRIVE_FACTOR = 20;
@@ -37,6 +38,23 @@ void Point_mode(PIDStructureTypeDef *PID , QEIStructureTypeDef *QEI,float setpoi
 {
 	PIDControllerPosition_Command(PID, QEI, setpoint);
 	Motor_Control(PID->Command);
+}
+
+void SetHome_mode(FlagTypeDef *flag ,QEIStructureTypeDef *QEI)
+{
+	static uint8_t pre_state = 0;
+	if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) && !pre_state)		// IF found PHOTOELECTRIC
+	{
+		flag->setHome = 0;
+		Motor_Control(_BACKDRIVE_FACTOR);
+		QEIEncoder_SetHome(QEI);
+	}
+	else
+	{
+		flag->setHome = 1;
+		Motor_Control(-100);
+		pre_state = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14);
+	}
 }
 
 

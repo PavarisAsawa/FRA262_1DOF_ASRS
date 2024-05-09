@@ -1,0 +1,30 @@
+/*
+ * ModeHandler.h
+ *
+ *  Created on: Apr 27, 2024
+ *      Author: emper
+ */
+
+#ifndef INC_MODEHANDLER_H_
+#define INC_MODEHANDLER_H_
+
+#include "Joystick.h"
+#include "Encoder.h"
+#include "Controller.h"
+#include "main.h"
+
+//typedef struct ZFLAG{
+//
+//
+//
+//}FlagTypeDef;
+
+void Jog_mode(JoystickStructureTypeDef *joystick, QEIStructureTypeDef *QEI);
+void Point_mode(PIDStructureTypeDef *PID , QEIStructureTypeDef *QEI,float setpoint);
+//void
+
+
+
+
+
+#endif /* INC_MODEHANDLER_H_ */

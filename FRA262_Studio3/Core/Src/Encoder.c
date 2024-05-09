@@ -16,6 +16,7 @@ void QEIEncoder_Init(QEIStructureTypeDef* QEIdata,TIM_HandleTypeDef* Encoder_tim
 {
 	QEIdata->EncoderTIM = Encoder_tim;
 	HAL_TIM_Encoder_Start(QEIdata->EncoderTIM, TIM_CHANNEL_ALL);		// Initialize Encoder Timer
+	QEIdata->HomePosition = 80;
 }
 
 void QEIEncoder_Update(QEIStructureTypeDef* QEIdata,TIM_HandleTypeDef* EncoderTIM ,uint64_t current_time)
@@ -43,7 +44,7 @@ void QEIEncoder_Update(QEIStructureTypeDef* QEIdata,TIM_HandleTypeDef* EncoderTI
 	tempVel[1]				=	tempVel[0];
 }
 
-void QEIEncoder_SetHome(QEIStructureTypeDef* QEIdata)
+void QEIEncoder_SetHome(QEIStructureTypeDef* QEI)
 {
-	QEIdata->LinearPosition = 0;	//	Set Zero Position
+	QEI->LinearPosition = QEI->HomePosition;//	Set Zero Position
 }

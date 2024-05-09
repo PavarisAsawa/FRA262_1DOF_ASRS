@@ -17,6 +17,7 @@ typedef struct _QEIStructure
 	float LinearAcceleration;	// [mm/s^2]
 	float LinearVelocity;		// mm/s
 	float LinearPosition;		// mm
+	float HomePosition;			// mm
 	TIM_HandleTypeDef* EncoderTIM;	// Define Encoder Timer
 }QEIStructureTypeDef;
 
