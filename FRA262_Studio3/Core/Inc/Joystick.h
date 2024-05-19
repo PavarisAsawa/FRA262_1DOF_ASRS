@@ -9,8 +9,8 @@
 #define INC_JOYSTICK_H_
 
 #include "main.h"
-#include "Joystick.h"
 #include "Encoder.h"
+#include "ModbusRTU.h"
 
 /*		PIN - LIST		*/
 /*

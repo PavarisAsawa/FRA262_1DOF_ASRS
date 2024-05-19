@@ -1,9 +1,28 @@
-20:55:24 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+18:50:44 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
 make -j16 all 
+arm-none-eabi-gcc "../Core/Src/BaseSystem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/BaseSystem.d" -MT"Core/Src/BaseSystem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/BaseSystem.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/BaseSystem.c:12:8: warning: type defaults to 'int' in declaration of 'STATE' [-Wimplicit-int]
+   12 | extern STATE;
+      |        ^~~~~
+../Core/Src/BaseSystem.c:13:8: warning: type defaults to 'int' in declaration of 'test' [-Wimplicit-int]
+   13 | extern test;
+      |        ^~~~
+../Core/Src/BaseSystem.c: In function 'Routine':
+../Core/Src/BaseSystem.c:38:46: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+   38 |         registerFrame[0x12].U16 = (uint16_t)(fabs(QEI->LinearVelocity * 10)); //Z-axis Actual Speed = 20
+      |                                              ^~~~
+../Core/Src/BaseSystem.c:8:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    7 | #include <BaseSystem.h>
+  +++ |+#include <math.h>
+    8 | 
+../Core/Src/BaseSystem.c:38:46: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+   38 |         registerFrame[0x12].U16 = (uint16_t)(fabs(QEI->LinearVelocity * 10)); //Z-axis Actual Speed = 20
+      |                                              ^~~~
+../Core/Src/BaseSystem.c:38:46: note: include '<math.h>' or provide a declaration of 'fabs'
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:169:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
-  169 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
+../Core/Src/main.c:185:37: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+  185 |   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
       |                             ~~~~~~~~^~~~~~~~~
       |                                     |
       |                                     uint16_t * {aka short unsigned int *}
@@ -14,17 +33,20 @@ In file included from ../Core/Inc/stm32g4xx_hal_conf.h:228,
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc.h:2242:78: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
  2242 | HAL_StatusTypeDef       HAL_ADC_Start_DMA(ADC_HandleTypeDef *hadc, uint32_t *pData, uint32_t Length);
       |                                                                    ~~~~~~~~~~^~~~~
+../Core/Src/main.c:228:25: warning: implicit declaration of function 'Motor_Control' [-Wimplicit-function-declaration]
+  228 |                         Motor_Control((int32_t)(PIDv.Command));
+      |                         ^~~~~~~~~~~~~
 arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: FRA262_Studio3.elf
  
 arm-none-eabi-size  FRA262_Studio3.elf 
 arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
    text	   data	    bss	    dec	    hex	filename
-  44992	    640	   5928	  51560	   c968	FRA262_Studio3.elf
+  49160	    648	   6080	  55888	   da50	FRA262_Studio3.elf
 Finished building: default.size.stdout
  
 Finished building: FRA262_Studio3.list
  
 
-20:55:25 Build Finished. 0 errors, 1 warnings. (took 1s.450ms)
+18:50:46 Build Finished. 0 errors, 6 warnings. (took 1s.460ms)
 

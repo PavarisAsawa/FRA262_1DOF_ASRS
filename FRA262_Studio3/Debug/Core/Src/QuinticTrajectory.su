@@ -1,2 +1,3 @@
 ../Core/Src/QuinticTrajectory.c:18:6:QuinticTrajectory_Init	16	static
 ../Core/Src/QuinticTrajectory.c:31:6:QuinticTrajectory_Generator	48	static
+../Core/Src/QuinticTrajectory.c:79:6:QuinticTrajectory_SetReady	16	static

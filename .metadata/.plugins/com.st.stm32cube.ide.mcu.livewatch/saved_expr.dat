@@ -4,12 +4,16 @@ Joystick
 QEI.LinearPosition
 PIDv
 QEI.LinearVelocity
-tempSetpoint
-Trajectory
 quintic
+STATE
+Flag.TrejectoryGen
+Flag
+SteadyPosition
+Value
+Joystick.PointPosition
 test
+registerFrame[0x01].U16
 test2
-HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)
-photoUP
-photoDOWN
+test3
 registerFrame[0x00].U16
+pon

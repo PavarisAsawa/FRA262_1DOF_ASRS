@@ -75,3 +75,8 @@ void QuinticTrajectory_Generator(QuinticTypeDef *q, float pi ,float pf , float t
 		break;
 	}
 }
+
+void QuinticTrajectory_SetReady(QuinticTypeDef *q)
+{
+	q->STATE = READY;
+}

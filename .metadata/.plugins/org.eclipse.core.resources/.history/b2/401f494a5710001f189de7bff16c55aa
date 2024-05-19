@@ -1,0 +1,33 @@
+/*
+ * Joystick.h
+ *
+ *  Created on: Apr 27, 2024
+ *      Author: emper
+ */
+
+#ifndef INC_JOYSTICK_H_
+#define INC_JOYSTICK_H_
+
+#include "main.h"
+#include "Encoder.h"
+#include "BaseSystem.h"
+
+
+/*		PIN - LIST		*/
+/*
+	A	:	PB10
+	B	:	PB4
+	C	:	PB5
+	D	:	PA10
+*/
+
+enum
+{
+	A,B,C,D
+};
+
+
+
+void Joystick_UpdateValue(JoystickStructureTypeDef *joystick , QEIStructureTypeDef *QEI);
+
+#endif /* INC_JOYSTICK_H_ */

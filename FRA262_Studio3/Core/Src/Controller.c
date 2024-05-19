@@ -65,8 +65,8 @@ void PIDControllerPosition_Command(PIDStructureTypeDef* PID,QEIStructureTypeDef*
 	}
 	else PID->Command = 0;
 
-	if(PID->Command >= 1000) PID->Command = 1000;
-	else if (PID->Command <= -1000) PID->Command = -1000;
+	if(PID->Command >= 550) PID->Command = 550;
+	else if (PID->Command <= -550) PID->Command = -550;
 	// Implement PID Velocity Form Algorithm
 
 	/* Update Variable */

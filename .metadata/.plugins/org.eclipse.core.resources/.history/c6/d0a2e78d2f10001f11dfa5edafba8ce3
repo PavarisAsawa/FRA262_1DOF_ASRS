@@ -1,0 +1,33 @@
+/*
+ * ModeHandler.h
+ *
+ *  Created on: Apr 27, 2024
+ *      Author: emper
+ */
+
+#ifndef INC_MODEHANDLER_H_
+#define INC_MODEHANDLER_H_
+
+#include "Joystick.h"
+#include "Encoder.h"
+#include "Controller.h"
+#include "main.h"
+
+typedef struct FLAG{
+
+	uint8_t setHome;
+	uint8_t Jog;
+	uint8_t setShelve;
+	uint8_t Point;
+}FlagTypeDef;
+
+void SetShelve_mode(FlagTypeDef *flag,JoystickStructureTypeDef *joystick, QEIStructureTypeDef *QEI);
+void Point_mode(FlagTypeDef *flag,PIDStructureTypeDef *PID , QEIStructureTypeDef *QEI,float setpoint);
+void SetHome_mode(FlagTypeDef *flag ,QEIStructureTypeDef *QEI);
+//void
+
+
+
+
+
+#endif /* INC_MODEHANDLER_H_ */

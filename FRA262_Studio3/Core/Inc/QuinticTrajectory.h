@@ -18,8 +18,8 @@ typedef struct Quintic
 	float Acceleration;
 
 	// define constrain
-	float v;	// max v
-	float a;	// max a
+//	float v;	// max v
+//	float a;	// max a
 
 	float t;	// time to calculate
 	float tf;	// Final Time
@@ -36,6 +36,7 @@ typedef struct Quintic
 
 void QuinticTrajectory_Init(QuinticTypeDef *q);
 void QuinticTrajectory_Generator(QuinticTypeDef *q, float pi ,float pf , float tf);
+void QuinticTrajectory_SetReady(QuinticTypeDef *q);
 
 
 

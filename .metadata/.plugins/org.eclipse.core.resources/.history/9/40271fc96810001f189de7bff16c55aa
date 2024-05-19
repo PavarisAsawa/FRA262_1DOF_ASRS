@@ -1,0 +1,174 @@
+/*
+ * ModeHandler.c
+ *
+ *  Created on: Apr 27, 2024
+ *      Author: emper
+ */
+
+#include "ModeHandler.h"
+#include "Controller.h"
+#include "main.h"
+#include "BaseSystem.h"
+
+uint64_t _BACKDRIVE_FACTOR = 20;
+uint64_t MAX_SPEED = 200;
+
+extern TIM_HandleTypeDef htim4;
+extern u16u8_t registerFrame[200];
+extern GetValue Value;
+extern State status;
+extern JoystickStructureTypeDef Joystick;
+extern float SetPosition;
+extern float SteadyPosition;
+
+enum
+{
+	IDLE,GOING,PICKING,PLACING
+};
+
+void SetShelve_mode(FlagTypeDef *flag,JoystickStructureTypeDef *joystick , QEIStructureTypeDef *QEI)
+{
+	flag->setShelve = 1;
+	static int8_t POINT = 0;
+	if(POINT > 4) POINT = 4;
+	else if(POINT < 0) POINT = 0;
+	Joystick_UpdateValue(joystick, QEI);
+
+    if(joystick->PIN[A] == 1)
+	{
+		registerFrame[0x23].U16 = joystick->PointPosition[0]*10; // ค่า Shelve ที่ต้องส่งให้ BaseSytem
+		registerFrame[0x24].U16 = joystick->PointPosition[1]*10;
+		registerFrame[0x25].U16 = joystick->PointPosition[2]*10;
+		registerFrame[0x26].U16 = joystick->PointPosition[3]*10;
+		registerFrame[0x27].U16 = joystick->PointPosition[4]*10;
+		flag->setShelve = 2;
+	}
+    else if(joystick->PIN[B] == 1)
+	{
+		joystick->PointPosition[POINT] = QEI->LinearPosition;
+		POINT++;
+	}
+	else if(joystick->PIN[C] == 1)
+	{
+		joystick->PointPosition[0] = 0;
+		joystick->PointPosition[1] = 0;
+		joystick->PointPosition[2] = 0;
+		joystick->PointPosition[3] = 0;
+		joystick->PointPosition[4] = 0;
+		POINT = 0;
+	}
+	else if(joystick->PIN[D] == 1)
+	{
+		joystick->PointPosition[POINT] = 0;
+		POINT--;
+	}
+
+	if(joystick->Y < 2146 && joystick->Y >1950)
+	{
+		Motor_Control(_BACKDRIVE_FACTOR);
+	}
+	else if(joystick->Y > 2146)
+	{
+		if( (uint16_t)(((joystick->Y-2000)*MAX_SPEED)/2000) > _BACKDRIVE_FACTOR) Motor_Control((uint16_t)(((joystick->Y-2000)*MAX_SPEED)/2000));
+		else Motor_Control(_BACKDRIVE_FACTOR);
+	}
+	else if(joystick->Y < 1950)
+	{
+		Motor_Control(-(uint16_t)(((1975-joystick->Y)*MAX_SPEED)/1975));
+	}
+	else Motor_Control(_BACKDRIVE_FACTOR);
+}
+
+void SetHome_mode(FlagTypeDef *flag ,QEIStructureTypeDef *QEI)
+{
+	static uint8_t pre_state = 0;
+	if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) && !pre_state)		// IF found PHOTOELECTRIC
+	{
+		flag->setHome = 2;
+		Motor_Control(_BACKDRIVE_FACTOR);
+		QEIEncoder_SetHome(QEI);
+	}
+	else
+	{
+		flag->setHome = 1;
+		Motor_Control(-125);
+		pre_state = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14);
+	}
+}
+
+void Point_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef *PIDv , QEIStructureTypeDef *QEI,QuinticTypeDef *quintic , float goal)
+{
+	flag->Point = 1;
+	flag->TrejectoryGen = 1;
+	PIDControllerCascade_Command2(PIDp, PIDv, QEI, quintic->Position, quintic->Velocity);
+	Motor_Control((int32_t)PIDv->Command);
+	if(fabs(QEI->LinearPosition - goal) <= 0.05)
+	{
+		flag->Point = 2;
+		flag->TrejectoryGen =0;
+	}
+}
+
+
+
+void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef *PIDv , QEIStructureTypeDef *QEI,QuinticTypeDef *quintic)
+{
+	static uint8_t SUBSTATE = IDLE;
+	switch (SUBSTATE) {
+		case IDLE:
+			if(flag->Jog == 0) flag->jogTIME = 0;
+
+			flag->Jog = 1;
+			flag->TrejectoryGen = 1;
+			if (flag->jogTIME < 9)
+			{
+				SetPosition = Value.TargetPosition[flag->jogTIME];
+				QuinticTrajectory_SetReady(quintic);
+				SUBSTATE = GOING;
+			}
+			else
+			{
+				flag->Jog = 2;
+				SteadyPosition = SetPosition;
+				return;
+			}
+			break;
+		case GOING:
+			if(flag->jogTIME % 2 == 0) status.Z_Status = 4;				//	Pick
+			else if(flag->jogTIME % 2 == 1) status.Z_Status = 8;		//	Place
+			PIDControllerCascade_Command2(PIDp, PIDv, QEI, quintic->Position, quintic->Velocity);
+			Motor_Control((int32_t)PIDv->Command);
+
+			if(fabs(QEI->LinearPosition - SetPosition) <= 0.05)
+			{
+				flag->TrejectoryGen = 0;
+				if(flag->jogTIME % 2 == 0) SUBSTATE = PICKING;				//	Pick
+				else if(flag->jogTIME % 2 == 1) SUBSTATE = PLACING;		//	Place
+				flag->jogTIME += 1;
+			}
+			break;
+		case PICKING:
+			SUBSTATE = IDLE;
+			break;
+		case PLACING:
+			SUBSTATE = IDLE;
+			break;
+
+
+	}
+	if(flag->Jog == 0) flag->jogTIME = 0;
+
+	PIDControllerCascade_Command2(PIDp, PIDv, QEI, quintic->Position, quintic->Velocity);
+	Motor_Control((int32_t)PIDv->Command);
+
+	if(flag->jogTIME % 2 == 0) status.Z_Status = 4;				//	Pick
+	else if(flag->jogTIME % 2 == 1) status.Z_Status = 8;		//	Place
+
+
+	if(fabs(QEI->LinearPosition - SetPosition) <= 0.05) // Reach Target
+		{
+
+
+		}
+
+}

@@ -1,5 +1,5 @@
 Core/Src/ModeHandler.o: ../Core/Src/ModeHandler.c \
- ../Core/Inc/ModeHandler.h ../Core/Inc/Joystick.h ../Core/Inc/main.h \
+ ../Core/Inc/ModeHandler.h ../Core/Inc/Encoder.h ../Core/Inc/main.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h \
  ../Core/Inc/stm32g4xx_hal_conf.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h \
@@ -32,10 +32,11 @@ Core/Src/ModeHandler.o: ../Core/Src/ModeHandler.c \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
- ../Core/Inc/Encoder.h ../Core/Inc/Controller.h ../Core/Inc/Controller.h \
- ../Core/Inc/main.h
+ ../Core/Inc/Controller.h ../Core/Inc/QuinticTrajectory.h \
+ ../Core/Inc/BaseSystem.h ../Core/Inc/ModBusRTU.h ../Core/Inc/Joystick.h \
+ ../Core/Inc/ModbusRTU.h ../Core/Inc/ModeHandler.h ../Core/Inc/main.h
 ../Core/Inc/ModeHandler.h:
-../Core/Inc/Joystick.h:
+../Core/Inc/Encoder.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:
@@ -69,7 +70,11 @@ Core/Src/ModeHandler.o: ../Core/Src/ModeHandler.c \
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h:
-../Core/Inc/Encoder.h:
 ../Core/Inc/Controller.h:
-../Core/Inc/Controller.h:
+../Core/Inc/QuinticTrajectory.h:
+../Core/Inc/BaseSystem.h:
+../Core/Inc/ModBusRTU.h:
+../Core/Inc/Joystick.h:
+../Core/Inc/ModbusRTU.h:
+../Core/Inc/ModeHandler.h:
 ../Core/Inc/main.h:

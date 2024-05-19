@@ -11,7 +11,10 @@
 
 #include <ModBusRTU.h>
 #include "Encoder.h"
+#include "Joystick.h"
+#include "Controller.h"
 #include "main.h"
+#include "ModeHandler.h"
 
 extern ModbusHandleTypedef hmodbus;
 extern u16u8_t registerFrame[200];
@@ -22,12 +25,18 @@ typedef struct {
 	uint16_t acce;
 }Z_Value;
 
+
 typedef struct {
 	uint16_t GoalPoint;
-	uint16_t PickOder;
-	uint16_t PlaceOder;
+	uint16_t PickOrder;
+	uint16_t PlaceOrder;
+	uint16_t Pick[5];
+	uint16_t Place[5];
+	float PointPosition[5];
+	float TargetPoint[10];
+	float TargetPosition[10];
+
 }GetValue;
-extern GetValue Value;
 
 typedef struct {
 	uint16_t HeartFlag;
@@ -38,7 +47,6 @@ typedef struct {
 	int StateFrame;
 	int Place;
 }State;
-extern State status;
 
 typedef struct {
 	uint16_t ShelvePosition_1;
@@ -47,9 +55,6 @@ typedef struct {
 	uint16_t ShelvePosition_4;
 	uint16_t ShelvePosition_5;
 }ShelvePosition;
-extern ShelvePosition shelve;
-
-
 
 void Heartbeat();
 void Routine(QEIStructureTypeDef *qei);
@@ -59,7 +64,7 @@ void Set_Shelves();
 void GetGoalPoint();
 void RunPointMode();
 void SetHome();
-void GetPick_PlaceOrder();
+void GetPick_PlaceOrder(JoystickStructureTypeDef *joy);
 void RunJogMode();
 
 #endif /* INC_BASESYSTEM_H_ */
