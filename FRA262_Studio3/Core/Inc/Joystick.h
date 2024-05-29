@@ -32,6 +32,7 @@ typedef struct _JoystickStructure
 	uint16_t Y;
 	uint16_t PIN[4];				//A B C D
 	float PointPosition[5];
+	float Xpos;
 }JoystickStructureTypeDef;
 
 void Joystick_UpdateValue(JoystickStructureTypeDef *joystick , QEIStructureTypeDef *QEI);

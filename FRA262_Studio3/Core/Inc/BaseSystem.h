@@ -57,7 +57,7 @@ typedef struct {
 }ShelvePosition;
 
 void Heartbeat();
-void Routine(QEIStructureTypeDef *qei);
+void Routine(QEIStructureTypeDef *qei,JoystickStructureTypeDef *joy);
 void VacuumOn_Off();
 void Gripper_Movement();
 void Set_Shelves();

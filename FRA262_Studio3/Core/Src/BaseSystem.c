@@ -10,8 +10,10 @@ extern State status;
 extern ShelvePosition shelve;
 extern GetValue Value;
 extern STATE;
-extern test;
+extern QEIStructureTypeDef QEI;
+extern float KFoutput[3];
 
+float safePush = 7;
 
 void Heartbeat(){
 	static uint64_t timestamp = 0;
@@ -22,7 +24,7 @@ void Heartbeat(){
 	  }
 }
 
-void Routine(QEIStructureTypeDef *QEI){
+void Routine(QEIStructureTypeDef *QEI , JoystickStructureTypeDef *joy){
 	static uint64_t timestamp2 = 0;
 	if(HAL_GetTick() >= timestamp2 && registerFrame[0x00].U16 == 18537) //ส่งค่าพวกนี้หลังจาก BaseSytem อ่าน Heartbeat ทุกๆ 200 ms
 	{
@@ -34,10 +36,10 @@ void Routine(QEIStructureTypeDef *QEI){
 	else registerFrame[0x04].U16 = 0b0000;
 
 	registerFrame[0x10].U16 = status.Z_Status; //Z-axis Moving Status
-	registerFrame[0x11].U16 = (int16_t)(QEI->LinearPosition * 10); //Z-axis Actual Position = 19 ค่าจริง*10
-	registerFrame[0x12].U16 = (uint16_t)(fabs(QEI->LinearVelocity * 10)); //Z-axis Actual Speed = 20
-	registerFrame[0x13].U16 = (uint16_t)(fabs(QEI->LinearAcceleration * 10)); //Z-axis Acceleration = 21
-	registerFrame[0x40].U16 = 22*10; //X-axis Actual Position = 2
+	registerFrame[0x11].U16 = (int16_t)((QEI->LinearPosition - (int16_t)(QEI->HomePosition))  * 10); //Z-axis Actual Position = 19 ค่าจริง*10
+	registerFrame[0x12].U16 = (uint16_t)(fabs(KFoutput[1] * 10)); //Z-axis Actual Speed = 20
+	registerFrame[0x13].U16 = (uint16_t)(fabs(KFoutput[2] * 10)); //Z-axis Acceleration = 21
+	registerFrame[0x40].U16 = (int16_t)((joy->Xpos)*10); //X-axis Actual Position = 2
 
 		if(registerFrame[0x02].U16 == 0b0000)
 		{
@@ -144,7 +146,7 @@ void SetHome(){
 }
 
 void GetPick_PlaceOrder(JoystickStructureTypeDef *joy){
-	//if(registerFrame[0x01].U16 == 4){ // after pressing run button on Jogmode (before running)
+	if(registerFrame[0x01].U16 == 4){ // after pressing run button on Jogmode (before running)
 		Value.PickOrder = registerFrame[0x21].U16 ; // ค่าชั้นที่ต้อง Pick from BaseSystem
 		Value.PlaceOrder = registerFrame[0x22].U16 ;// ค่าชั้นที่ต้อง Place from BaseSystem
 
@@ -185,6 +187,16 @@ void GetPick_PlaceOrder(JoystickStructureTypeDef *joy){
 			else if(Value.TargetPoint[i] == 4) Value.TargetPosition[i] = Value.PointPosition[3];
 			else if(Value.TargetPoint[i] == 5) Value.TargetPosition[i] = Value.PointPosition[4];
 		}
+		for(int i = 0; i < 10; i++)
+		{
+			static float tempPos = 0;
+			if(i%2 == 1)
+			{
+				tempPos = Value.TargetPosition[i];
+				Value.TargetPosition[i] = tempPos+safePush;
+			}
+		}
+	}
 		//ค่าที่ได้จะเรียงติดกัน ex.ถ้าเซ็ตค่าในUIชั้นแรกที่ต้อง Pick คือ ชั้น1-5 ตามลำดับ ค่าชั้นที่ต้องPick จะได้ 12345
 }
 

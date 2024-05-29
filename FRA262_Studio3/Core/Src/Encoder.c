@@ -16,7 +16,7 @@ void QEIEncoder_Init(QEIStructureTypeDef* QEIdata,TIM_HandleTypeDef* Encoder_tim
 {
 	QEIdata->EncoderTIM = Encoder_tim;
 	HAL_TIM_Encoder_Start(QEIdata->EncoderTIM, TIM_CHANNEL_ALL);		// Initialize Encoder Timer
-	QEIdata->HomePosition = 65;
+	QEIdata->HomePosition = 64.85;
 }
 
 void QEIEncoder_Update(QEIStructureTypeDef* QEIdata,TIM_HandleTypeDef* EncoderTIM ,uint64_t current_time)

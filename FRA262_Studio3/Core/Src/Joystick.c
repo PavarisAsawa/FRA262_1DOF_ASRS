@@ -36,31 +36,39 @@ void Joystick_UpdateValue(JoystickStructureTypeDef* joystick,QEIStructureTypeDef
 	/* Update STATE Value */
 
 //
-    if (!tempSTATE[A] && HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10) && (currentTIME - lastTIME[A] > DEBOUNCE_INTERVAL)) {
+    if (!tempSTATE[A] && HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10) && (currentTIME - lastTIME[A] > DEBOUNCE_INTERVAL))
+    {
         joystick->PIN[A] = 1;
         lastTIME[A] = currentTIME;
-    } else joystick->PIN[A] = 0;
+    }
+    else joystick->PIN[A] = 0;
     tempSTATE[A] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10);
 
     // Check button B
-    if (!tempSTATE[B] && HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4) && (currentTIME - lastTIME[B] > DEBOUNCE_INTERVAL)) {
+    if (!tempSTATE[B] && HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4) && (currentTIME - lastTIME[B] > DEBOUNCE_INTERVAL))
+    {
         joystick->PIN[B] = 1;
         lastTIME[B] = currentTIME;
-    } else joystick->PIN[B] = 0;
+    }
+    else joystick->PIN[B] = 0;
     tempSTATE[B] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
 
     // Check button C
-    if (!tempSTATE[C] && HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5) && (currentTIME - lastTIME[C] > DEBOUNCE_INTERVAL)) {
+    if (!tempSTATE[C] && HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5) && (currentTIME - lastTIME[C] > DEBOUNCE_INTERVAL))
+    {
         joystick->PIN[C] = 1;
         lastTIME[C] = currentTIME;
-    } else joystick->PIN[C] = 0;
+    }
+    else joystick->PIN[C] = 0;
     tempSTATE[C] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5);
 
     // Check button D
-    if (!tempSTATE[D] && HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10) && (currentTIME - lastTIME[D] > DEBOUNCE_INTERVAL)) {
+    if (!tempSTATE[D] && HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10) && (currentTIME - lastTIME[D] > DEBOUNCE_INTERVAL))
+    {
         joystick->PIN[D] = 1;
         lastTIME[D] = currentTIME;
-    } else joystick->PIN[D] = 0;
+    }
+    else joystick->PIN[D] = 0;
     tempSTATE[D] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
 
 

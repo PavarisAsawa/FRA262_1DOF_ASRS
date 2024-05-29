@@ -1,0 +1,47 @@
+/*
+ * KalmanFilter.h
+ *
+ *  Created on: May 27, 2024
+ *      Author: emper
+ */
+
+#ifndef INC_KALMANFILTER_H_
+#define INC_KALMANFILTER_H_
+
+#include "arm_math.h"
+
+// KALMAN STRUCTURE
+typedef struct{
+    arm_matrix_instance_f32 A;   //STATE TRANSITTION MATRIX
+    arm_matrix_instance_f32 B;   //CONTROL INPUT MATRIX
+    arm_matrix_instance_f32 C;   //OBSERVATION MATRIX
+    arm_matrix_instance_f32 D;   //CONTROL INPUT MATRIX TO MEASUREMENT
+    arm_matrix_instance_f32 G;   //PROCESS NOISE GAIN MATRIX
+    arm_matrix_instance_f32 Q;   //PROCCESS NOISE COVARIANCE
+    arm_matrix_instance_f32 R;   //MEASUREMENT NOISE COVARIANCE
+    arm_matrix_instance_f32 P;   //PREDICTION ERROR COVARIANCE
+    arm_matrix_instance_f32 K;   //KALMAN GAIN
+    arm_matrix_instance_f32 S;   //INNOVATION COVARIANCE
+    arm_matrix_instance_f32 w;   //PROCCESS NOISE
+    arm_matrix_instance_f32 u;   //CONTROL INPUT
+    arm_matrix_instance_f32 y;   //MEASUREMENT VALUE
+    arm_matrix_instance_f32 x;   //STATE ESTIMSATE
+    arm_matrix_instance_f32 temp1; //BUFFER MATRIX
+    arm_matrix_instance_f32 temp2; //BUFFER MATRIX
+    arm_matrix_instance_f32 temp3; //BUFFER MATRIX
+    arm_matrix_instance_f32 temp4; //BUFFER MATRIX
+    arm_matrix_instance_f32 temp5; //BUFFER MATRIX
+    arm_matrix_instance_f32 temp6; //BUFFER MATRIX
+} Kalman;
+
+// INITIALIZE KALMAN STRUCTURE
+void Kalman_Init(Kalman* Kal);
+
+// PREDICTION STATE
+void Kalman_Predict(Kalman* Kal);
+
+// UPDATE STATE
+void Kalman_Update(Kalman* Kal);
+
+
+#endif /* INC_KALMANFILTER_H_ */

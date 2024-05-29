@@ -29,6 +29,7 @@
 #include "QuinticTrajectory.h"
 #include "ModbusRTU.h"
 #include "BaseSystem.h"
+#include "KalmanFilter.h"
 
 /* USER CODE END Includes */
 
@@ -82,6 +83,10 @@ GetValue Value;
 /* ENUM FOR STATE MACHINE */
 uint16_t STATE;
 FlagTypeDef Flag;
+uint16_t preSTATE;
+
+/* Kalman Filter*/
+float KFoutput[3] = {0,0,0};
 
 enum
 {
@@ -92,6 +97,7 @@ enum
 uint64_t FwReed;
 uint64_t BwReed;
 uint64_t Vacuum;
+uint8_t EMERread;
 
 uint64_t test;
 uint64_t test2;
@@ -121,6 +127,7 @@ static void MX_TIM16_Init(void);
 uint64_t micros();
 void NoiseTest1();
 void NoiseTest2();
+void EmergencyCatcher();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -174,18 +181,13 @@ int main(void)
 
   pon = 0;
 
-
-
-  HAL_TIM_Base_Start_IT(&htim2);						// Initialize System Timer
-  HAL_TIM_Base_Start_IT(&htim3);						// Initialize 1 ms Timer
-
   HAL_TIM_Base_Start(&htim4);							// Initialize PMW Signal Timer
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
 
   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
 
-  float PID_P_up[3] = {0.82 ,0.000038, 0}; //{0.84 ,0.0000023, 0};
-  float PID_P_down[3] = {0.88 ,0.000028, 0}; //{1.6 ,0.000000067, 0}
+  float PID_P_up[3] = {0.82 ,0.000038, 0}; //{0.82 ,0.000038, 0};
+  float PID_P_down[3] = {0.88 ,0.000028, 0}; //{0.88 ,0.000028, 0}
 
   float PID_V_up[3] = {3.7 ,0.0013, 0.00000054}; //{4.38 ,0.005, 0.0000039}  {4.35 ,0.0038, 0.0000039}
   float PID_V_down[3] = {3.4 ,0.00085, 0.00000054};
@@ -194,11 +196,21 @@ int main(void)
   PIDController_Init(&PIDp, PID_P_up[0], PID_P_up[1], PID_P_up[2] , PID_P_down[0], PID_P_down[1], PID_P_down[2]);	// Initialize Position Controller
   PIDController_Init(&PIDv, PID_V_up[0], PID_V_up[1], PID_V_up[2] , PID_V_down[0], PID_V_down[1], PID_V_down[2]);	// Initialize Velocity Controller
 
+  Joystick.Xpos = 0;
+
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_4, SET);			// SET to UPWARD
 
   QuinticTrajectory_Init(&quintic);
   STATE = IDLE;
   SteadyPosition = QEI.LinearPosition;
+
+
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, RESET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, RESET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, RESET);
+
+  HAL_TIM_Base_Start_IT(&htim2);						// Initialize System Timer
+  HAL_TIM_Base_Start_IT(&htim3);						// Initialize 1 ms Timer
 
 
   /* USER CODE END 2 */
@@ -215,19 +227,18 @@ int main(void)
 	  pon = 1;
 	  Modbus_Protocal_Worker();
 	  Heartbeat();
-	  Routine(&QEI);
+	  Routine(&QEI,&Joystick);
 	  switch (STATE) {
 		case IDLE:
 			if(registerFrame[0x01].U16 == 2) STATE = SETHOME;
 			else if(registerFrame[0x01].U16 == 1) STATE = SETSHELVE;
 			else if(registerFrame[0x01].U16 == 8) STATE = POINT;
 			else if(registerFrame[0x01].U16 == 4) STATE = JOG;
-
-
+//			SolenoidPull();
+//			NoiseTest1();
 			PIDControllerCascade_Command2(&PIDp, &PIDv, &QEI, SteadyPosition, 0);
 			Motor_Control((int32_t)(PIDv.Command));
 			QuinticTrajectory_SetReady(&quintic);
-//			SolenoidSuck(0);
 			break;
 
 		case SETHOME:
@@ -265,7 +276,7 @@ int main(void)
 		case POINT:
 			status.Z_Status = 16;
 			GetGoalPoint();
-			SetPosition = (float)Value.GoalPoint;
+			SetPosition = (float)Value.GoalPoint + QEI.HomePosition;
 			Point_mode(&Flag,&PIDp,&PIDv,&QEI,&quintic,SetPosition);
 			if(Flag.Point == 2)				// Finish Point
 			{
@@ -279,7 +290,7 @@ int main(void)
 			}
 			break;
 		case JOG:
-			GetPick_PlaceOrder(&Joystick);
+			if(Flag.Jog == 0) GetPick_PlaceOrder(&Joystick);
 			Jog_mode(&Flag, &PIDp, &PIDv, &QEI, &quintic);
 			if(Flag.Jog == 2)
 			{
@@ -290,12 +301,18 @@ int main(void)
 				STATE = IDLE;
 			}
 			break;
-//		case EMERGENCY:
-//			Motor_Control(0);
-//			break;
+		case EMERGENCY:
+			Motor_Control(0);
+			break;
 	}
 	  FwReed = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9);
 	  BwReed = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7);
+	  EMERread = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6);
+
+	  photoDOWN = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14);
+
+	  EmergencyCatcher();
+
 //	  SolenoidSuck(1);
 
   }
@@ -761,6 +778,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : PA6 PA9 PA10 */
+  GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_9|GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
   /*Configure GPIO pins : PC4 PC5 */
   GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -768,20 +791,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB10 PB4 PB5 */
-  GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_4|GPIO_PIN_5;
+  /*Configure GPIO pins : PB10 PB12 PB4 PB5 */
+  GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_12|GPIO_PIN_4|GPIO_PIN_5;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PB12 */
-  GPIO_InitStruct.Pin = GPIO_PIN_12;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PB13 PB14 */
-  GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14;
+  /*Configure GPIO pin : PB14 */
+  GPIO_InitStruct.Pin = GPIO_PIN_14;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -791,12 +808,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PA9 PA10 */
-  GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
@@ -821,6 +832,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)	// Timer Interrupt
 		{
 			QuinticTrajectory_Generator(&quintic, QEI.LinearPosition, SetPosition, 2);
 		}
+		kalman_predict(&KFoutput, &P_est, &Ak, &G, Q);
+		kalman_update(&KFoutput, &P_est, &Ck, R, QEI.LinearPosition);
+
 	}
 }
 
@@ -829,10 +843,19 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)				//	External Interrupt
 	if(GPIO_Pin == GPIO_PIN_13)			// Blue Switch
 	{
 	}
-	else if(GPIO_Pin == GPIO_PIN_12)			// Emergency
-	{
-//		STATE = EMERGENCY;
-	}
+}
+
+void EmergencyCatcher()
+{
+	static uint8_t oldState;
+	static uint64_t lastTIME;
+
+	  if (oldState && HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6) && (micros()- lastTIME > 100000))
+	  {
+		  STATE = EMERGENCY;
+		  lastTIME = micros();
+	  }
+	  oldState = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6);
 }
 
 uint64_t micros()	// System Time
@@ -842,9 +865,17 @@ uint64_t micros()	// System Time
 
 void NoiseTest1()
 {
-	  SolenoidPull();
-	  HAL_Delay(600);
+//	uint64_t timestamp;
+//	if(micros() > timestamp)
+//	{
+//		timestamp = micros() + 600000;
+//		SolenoidPull();
+//	}
+//	else SolenoidPush();
+
 	  SolenoidPush();
+	  HAL_Delay(600);
+	  SolenoidPull();
 	  HAL_Delay(600);
 }
 
