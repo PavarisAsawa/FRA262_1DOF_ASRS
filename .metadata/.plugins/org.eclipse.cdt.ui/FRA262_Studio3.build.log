@@ -1,29 +1,10 @@
-00:14:09 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+22:53:21 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/QuinticTrajectory.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/QuinticTrajectory.d" -MT"Core/Src/QuinticTrajectory.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/QuinticTrajectory.o"
-../Core/Src/QuinticTrajectory.c: In function 'QuinticTrajectory_Generator':
-../Core/Src/QuinticTrajectory.c:51:34: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
-   51 |                 q->c[3] = 10.0*s/powf(q->tf,3);
-      |                                  ^~~~
-../Core/Src/QuinticTrajectory.c:9:1: note: include '<math.h>' or provide a declaration of 'powf'
-    8 | #include "QuinticTrajectory.h"
-  +++ |+#include <math.h>
-    9 | 
-../Core/Src/QuinticTrajectory.c:51:34: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
-   51 |                 q->c[3] = 10.0*s/powf(q->tf,3);
-      |                                  ^~~~
-../Core/Src/QuinticTrajectory.c:51:34: note: include '<math.h>' or provide a declaration of 'powf'
-arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: FRA262_Studio3.elf
- 
 arm-none-eabi-size  FRA262_Studio3.elf 
-arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
    text	   data	    bss	    dec	    hex	filename
-  52480	    720	   6192	  59392	   e800	FRA262_Studio3.elf
+  52568	    724	   6192	  59484	   e85c	FRA262_Studio3.elf
 Finished building: default.size.stdout
  
-Finished building: FRA262_Studio3.list
- 
 
-00:14:11 Build Finished. 0 errors, 2 warnings. (took 2s.61ms)
+22:53:22 Build Finished. 0 errors, 0 warnings. (took 1s.80ms)
 

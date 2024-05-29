@@ -20,8 +20,6 @@ extern float SetPosition;
 extern float SteadyPosition;
 extern uint64_t micros();
 
-uint32_t delay_time = 400000;
-
 extern uint8_t test2;
 //extern QEIStructureTypeDef QEI;
 
@@ -205,7 +203,7 @@ void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef 
 					else
 					{
 						PP = PUSH;
-						timestamp = micros() + delay_time + 400000;		// delay push seconds?
+						timestamp = micros() + 600000;		// delay push seconds?
 					}
 					break;
 
@@ -219,7 +217,7 @@ void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef 
 					else
 					{
 						PP = PULL;
-						timestamp = micros() + delay_time;		// delay push seconds?
+						timestamp = micros() + 600000;		// delay push seconds?
 					}
 					break;
 				case PULL:
@@ -256,7 +254,7 @@ void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef 
 					else
 					{
 						PP = PUSH;
-						timestamp = micros() + delay_time;		// delay push seconds?
+						timestamp = micros() + 400000;		// delay push seconds?
 					}
 					break;
 
@@ -270,7 +268,7 @@ void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef 
 					else
 					{
 						PP = PULL;
-						timestamp = micros() + delay_time;		// delay pull seconds?
+						timestamp = micros() + 600000;		// delay pull seconds?
 					}
 					break;
 				case PULL:

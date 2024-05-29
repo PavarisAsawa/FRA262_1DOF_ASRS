@@ -13,7 +13,7 @@ extern STATE;
 extern QEIStructureTypeDef QEI;
 extern float KFoutput[3];
 
-float safePush = 6.5;
+float safePush = 7;
 
 void Heartbeat(){
 	static uint64_t timestamp = 0;

@@ -2510,3 +2510,517 @@ Finished building: default.size.stdout
  
 Finished building: FRA262_Studio3.list
  
+18:39:42 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
+arm-none-eabi-gcc "../Core/Src/QuinticTrajectory.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/QuinticTrajectory.d" -MT"Core/Src/QuinticTrajectory.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/QuinticTrajectory.o"
+../Core/Src/QuinticTrajectory.c: In function 'QuinticTrajectory_Generator':
+../Core/Src/QuinticTrajectory.c:51:34: warning: implicit declaration of function 'powf' [-Wimplicit-function-declaration]
+   51 |                 q->c[3] = 10.0*s/powf(q->tf,3);
+      |                                  ^~~~
+../Core/Src/QuinticTrajectory.c:9:1: note: include '<math.h>' or provide a declaration of 'powf'
+    8 | #include "QuinticTrajectory.h"
+  +++ |+#include <math.h>
+    9 | 
+../Core/Src/QuinticTrajectory.c:51:34: warning: incompatible implicit declaration of built-in function 'powf' [-Wbuiltin-declaration-mismatch]
+   51 |                 q->c[3] = 10.0*s/powf(q->tf,3);
+      |                                  ^~~~
+../Core/Src/QuinticTrajectory.c:51:34: note: include '<math.h>' or provide a declaration of 'powf'
+../Core/Src/ModeHandler.c: In function 'SetShelve_mode':
+../Core/Src/ModeHandler.c:76:17: warning: implicit declaration of function 'Motor_Control' [-Wimplicit-function-declaration]
+   76 |                 Motor_Control(_BACKDRIVE_FACTOR);
+      |                 ^~~~~~~~~~~~~
+../Core/Src/ModeHandler.c: In function 'Point_mode':
+../Core/Src/ModeHandler.c:137:12: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:10:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    9 | #include "main.h"
+  +++ |+#include <math.h>
+   10 | 
+../Core/Src/ModeHandler.c:137:12: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:137:12: note: include '<math.h>' or provide a declaration of 'fabs'
+../Core/Src/ModeHandler.c: In function 'Jog_mode':
+../Core/Src/ModeHandler.c:181:28: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  181 |                         if(fabs(QEI->LinearPosition - SetPosition) <= 0.1)
+      |                            ^~~~
+../Core/Src/ModeHandler.c:181:28: note: include '<math.h>' or provide a declaration of 'fabs'
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  52484	    720	   6192	  59396	   e804	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+18:40:51 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-size  FRA262_Studio3.elf 
+   text	   data	    bss	    dec	    hex	filename
+  52484	    720	   6192	  59396	   e804	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+19:13:34 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
+../Core/Src/ModeHandler.c: In function 'SetShelve_mode':
+../Core/Src/ModeHandler.c:76:17: warning: implicit declaration of function 'Motor_Control' [-Wimplicit-function-declaration]
+   76 |                 Motor_Control(_BACKDRIVE_FACTOR);
+      |                 ^~~~~~~~~~~~~
+../Core/Src/ModeHandler.c: In function 'Point_mode':
+../Core/Src/ModeHandler.c:137:12: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:10:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    9 | #include "main.h"
+  +++ |+#include <math.h>
+   10 | 
+../Core/Src/ModeHandler.c:137:12: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:137:12: note: include '<math.h>' or provide a declaration of 'fabs'
+../Core/Src/ModeHandler.c: In function 'Jog_mode':
+../Core/Src/ModeHandler.c:181:28: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  181 |                         if(fabs(QEI->LinearPosition - SetPosition) <= 0.1)
+      |                            ^~~~
+../Core/Src/ModeHandler.c:181:28: note: include '<math.h>' or provide a declaration of 'fabs'
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  52484	    720	   6192	  59396	   e804	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+19:27:21 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-size  FRA262_Studio3.elf 
+   text	   data	    bss	    dec	    hex	filename
+  52484	    720	   6192	  59396	   e804	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+20:02:43 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
+../Core/Src/ModeHandler.c: In function 'SetShelve_mode':
+../Core/Src/ModeHandler.c:76:17: warning: implicit declaration of function 'Motor_Control' [-Wimplicit-function-declaration]
+   76 |                 Motor_Control(_BACKDRIVE_FACTOR);
+      |                 ^~~~~~~~~~~~~
+../Core/Src/ModeHandler.c: In function 'Point_mode':
+../Core/Src/ModeHandler.c:137:12: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:10:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    9 | #include "main.h"
+  +++ |+#include <math.h>
+   10 | 
+../Core/Src/ModeHandler.c:137:12: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:137:12: note: include '<math.h>' or provide a declaration of 'fabs'
+../Core/Src/ModeHandler.c: In function 'Jog_mode':
+../Core/Src/ModeHandler.c:181:28: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  181 |                         if(fabs(QEI->LinearPosition - SetPosition) <= 0.1)
+      |                            ^~~~
+../Core/Src/ModeHandler.c:181:28: note: include '<math.h>' or provide a declaration of 'fabs'
+../Core/Src/ModeHandler.c:230:89: error: expected expression before ')' token
+  230 |                                         else if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7) && )
+      |                                                                                         ^
+make: *** [Core/Src/subdir.mk:61: Core/Src/ModeHandler.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+20:03:27 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
+../Core/Src/ModeHandler.c: In function 'SetShelve_mode':
+../Core/Src/ModeHandler.c:76:17: warning: implicit declaration of function 'Motor_Control' [-Wimplicit-function-declaration]
+   76 |                 Motor_Control(_BACKDRIVE_FACTOR);
+      |                 ^~~~~~~~~~~~~
+../Core/Src/ModeHandler.c: In function 'Point_mode':
+../Core/Src/ModeHandler.c:137:12: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:10:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    9 | #include "main.h"
+  +++ |+#include <math.h>
+   10 | 
+../Core/Src/ModeHandler.c:137:12: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:137:12: note: include '<math.h>' or provide a declaration of 'fabs'
+../Core/Src/ModeHandler.c: In function 'Jog_mode':
+../Core/Src/ModeHandler.c:181:28: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  181 |                         if(fabs(QEI->LinearPosition - SetPosition) <= 0.1)
+      |                            ^~~~
+../Core/Src/ModeHandler.c:181:28: note: include '<math.h>' or provide a declaration of 'fabs'
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  52520	    720	   6192	  59432	   e828	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+20:05:16 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-size  FRA262_Studio3.elf 
+   text	   data	    bss	    dec	    hex	filename
+  52520	    720	   6192	  59432	   e828	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+20:08:27 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
+../Core/Src/ModeHandler.c: In function 'SetShelve_mode':
+../Core/Src/ModeHandler.c:76:17: warning: implicit declaration of function 'Motor_Control' [-Wimplicit-function-declaration]
+   76 |                 Motor_Control(_BACKDRIVE_FACTOR);
+      |                 ^~~~~~~~~~~~~
+../Core/Src/ModeHandler.c: In function 'Point_mode':
+../Core/Src/ModeHandler.c:137:12: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:10:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    9 | #include "main.h"
+  +++ |+#include <math.h>
+   10 | 
+../Core/Src/ModeHandler.c:137:12: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:137:12: note: include '<math.h>' or provide a declaration of 'fabs'
+../Core/Src/ModeHandler.c: In function 'Jog_mode':
+../Core/Src/ModeHandler.c:181:28: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  181 |                         if(fabs(QEI->LinearPosition - SetPosition) <= 0.1)
+      |                            ^~~~
+../Core/Src/ModeHandler.c:181:28: note: include '<math.h>' or provide a declaration of 'fabs'
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  52520	    720	   6192	  59432	   e828	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+20:16:27 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
+../Core/Src/ModeHandler.c: In function 'SetShelve_mode':
+../Core/Src/ModeHandler.c:76:17: warning: implicit declaration of function 'Motor_Control' [-Wimplicit-function-declaration]
+   76 |                 Motor_Control(_BACKDRIVE_FACTOR);
+      |                 ^~~~~~~~~~~~~
+../Core/Src/ModeHandler.c: In function 'Point_mode':
+../Core/Src/ModeHandler.c:137:12: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:10:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    9 | #include "main.h"
+  +++ |+#include <math.h>
+   10 | 
+../Core/Src/ModeHandler.c:137:12: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:137:12: note: include '<math.h>' or provide a declaration of 'fabs'
+../Core/Src/ModeHandler.c: In function 'Jog_mode':
+../Core/Src/ModeHandler.c:181:28: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  181 |                         if(fabs(QEI->LinearPosition - SetPosition) <= 0.1)
+      |                            ^~~~
+../Core/Src/ModeHandler.c:181:28: note: include '<math.h>' or provide a declaration of 'fabs'
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  52516	    720	   6192	  59428	   e824	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+20:29:14 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
+../Core/Src/ModeHandler.c: In function 'SetShelve_mode':
+../Core/Src/ModeHandler.c:76:17: warning: implicit declaration of function 'Motor_Control' [-Wimplicit-function-declaration]
+   76 |                 Motor_Control(_BACKDRIVE_FACTOR);
+      |                 ^~~~~~~~~~~~~
+../Core/Src/ModeHandler.c: In function 'Point_mode':
+../Core/Src/ModeHandler.c:137:12: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:10:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    9 | #include "main.h"
+  +++ |+#include <math.h>
+   10 | 
+../Core/Src/ModeHandler.c:137:12: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:137:12: note: include '<math.h>' or provide a declaration of 'fabs'
+../Core/Src/ModeHandler.c: In function 'Jog_mode':
+../Core/Src/ModeHandler.c:181:28: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  181 |                         if(fabs(QEI->LinearPosition - SetPosition) <= 0.1)
+      |                            ^~~~
+../Core/Src/ModeHandler.c:181:28: note: include '<math.h>' or provide a declaration of 'fabs'
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  52512	    720	   6192	  59424	   e820	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+20:37:01 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
+../Core/Src/ModeHandler.c: In function 'SetShelve_mode':
+../Core/Src/ModeHandler.c:76:17: warning: implicit declaration of function 'Motor_Control' [-Wimplicit-function-declaration]
+   76 |                 Motor_Control(_BACKDRIVE_FACTOR);
+      |                 ^~~~~~~~~~~~~
+../Core/Src/ModeHandler.c: In function 'Point_mode':
+../Core/Src/ModeHandler.c:137:12: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:10:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    9 | #include "main.h"
+  +++ |+#include <math.h>
+   10 | 
+../Core/Src/ModeHandler.c:137:12: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:137:12: note: include '<math.h>' or provide a declaration of 'fabs'
+../Core/Src/ModeHandler.c: In function 'Jog_mode':
+../Core/Src/ModeHandler.c:181:28: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  181 |                         if(fabs(QEI->LinearPosition - SetPosition) <= 0.1)
+      |                            ^~~~
+../Core/Src/ModeHandler.c:181:28: note: include '<math.h>' or provide a declaration of 'fabs'
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  52480	    720	   6192	  59392	   e800	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+20:39:44 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
+../Core/Src/ModeHandler.c: In function 'SetShelve_mode':
+../Core/Src/ModeHandler.c:76:17: warning: implicit declaration of function 'Motor_Control' [-Wimplicit-function-declaration]
+   76 |                 Motor_Control(_BACKDRIVE_FACTOR);
+      |                 ^~~~~~~~~~~~~
+../Core/Src/ModeHandler.c: In function 'Point_mode':
+../Core/Src/ModeHandler.c:137:12: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:10:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    9 | #include "main.h"
+  +++ |+#include <math.h>
+   10 | 
+../Core/Src/ModeHandler.c:137:12: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  137 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:137:12: note: include '<math.h>' or provide a declaration of 'fabs'
+../Core/Src/ModeHandler.c: In function 'Jog_mode':
+../Core/Src/ModeHandler.c:181:28: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  181 |                         if(fabs(QEI->LinearPosition - SetPosition) <= 0.1)
+      |                            ^~~~
+../Core/Src/ModeHandler.c:181:28: note: include '<math.h>' or provide a declaration of 'fabs'
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  52480	    720	   6192	  59392	   e800	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+21:05:17 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-size  FRA262_Studio3.elf 
+   text	   data	    bss	    dec	    hex	filename
+  52480	    720	   6192	  59392	   e800	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+21:26:30 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
+../Core/Src/ModeHandler.c: In function 'SetShelve_mode':
+../Core/Src/ModeHandler.c:78:17: warning: implicit declaration of function 'Motor_Control' [-Wimplicit-function-declaration]
+   78 |                 Motor_Control(_BACKDRIVE_FACTOR);
+      |                 ^~~~~~~~~~~~~
+../Core/Src/ModeHandler.c: In function 'Point_mode':
+../Core/Src/ModeHandler.c:139:12: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+  139 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:10:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    9 | #include "main.h"
+  +++ |+#include <math.h>
+   10 | 
+../Core/Src/ModeHandler.c:139:12: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  139 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:139:12: note: include '<math.h>' or provide a declaration of 'fabs'
+../Core/Src/ModeHandler.c: In function 'Jog_mode':
+../Core/Src/ModeHandler.c:183:28: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  183 |                         if(fabs(QEI->LinearPosition - SetPosition) <= 0.1)
+      |                            ^~~~
+../Core/Src/ModeHandler.c:183:28: note: include '<math.h>' or provide a declaration of 'fabs'
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  52544	    724	   6192	  59460	   e844	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+21:33:42 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/ModeHandler.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ModeHandler.d" -MT"Core/Src/ModeHandler.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ModeHandler.o"
+../Core/Src/ModeHandler.c: In function 'SetShelve_mode':
+../Core/Src/ModeHandler.c:78:17: warning: implicit declaration of function 'Motor_Control' [-Wimplicit-function-declaration]
+   78 |                 Motor_Control(_BACKDRIVE_FACTOR);
+      |                 ^~~~~~~~~~~~~
+../Core/Src/ModeHandler.c: In function 'Point_mode':
+../Core/Src/ModeHandler.c:139:12: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+  139 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:10:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    9 | #include "main.h"
+  +++ |+#include <math.h>
+   10 | 
+../Core/Src/ModeHandler.c:139:12: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  139 |         if(fabs(QEI->LinearPosition - goal) <= 0.05)
+      |            ^~~~
+../Core/Src/ModeHandler.c:139:12: note: include '<math.h>' or provide a declaration of 'fabs'
+../Core/Src/ModeHandler.c: In function 'Jog_mode':
+../Core/Src/ModeHandler.c:183:28: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+  183 |                         if(fabs(QEI->LinearPosition - SetPosition) <= 0.1)
+      |                            ^~~~
+../Core/Src/ModeHandler.c:183:28: note: include '<math.h>' or provide a declaration of 'fabs'
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  52568	    724	   6192	  59484	   e85c	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+22:10:09 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/BaseSystem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/BaseSystem.d" -MT"Core/Src/BaseSystem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/BaseSystem.o"
+../Core/Src/BaseSystem.c:12:8: warning: type defaults to 'int' in declaration of 'STATE' [-Wimplicit-int]
+   12 | extern STATE;
+      |        ^~~~~
+../Core/Src/BaseSystem.c: In function 'Routine':
+../Core/Src/BaseSystem.c:40:46: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+   40 |         registerFrame[0x12].U16 = (uint16_t)(fabs(KFoutput[1] * 10)); //Z-axis Actual Speed = 20
+      |                                              ^~~~
+../Core/Src/BaseSystem.c:8:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    7 | #include <BaseSystem.h>
+  +++ |+#include <math.h>
+    8 | 
+../Core/Src/BaseSystem.c:40:46: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+   40 |         registerFrame[0x12].U16 = (uint16_t)(fabs(KFoutput[1] * 10)); //Z-axis Actual Speed = 20
+      |                                              ^~~~
+../Core/Src/BaseSystem.c:40:46: note: include '<math.h>' or provide a declaration of 'fabs'
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  52568	    724	   6192	  59484	   e85c	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+22:10:27 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/BaseSystem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/BaseSystem.d" -MT"Core/Src/BaseSystem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/BaseSystem.o"
+../Core/Src/BaseSystem.c:12:8: warning: type defaults to 'int' in declaration of 'STATE' [-Wimplicit-int]
+   12 | extern STATE;
+      |        ^~~~~
+../Core/Src/BaseSystem.c: In function 'Routine':
+../Core/Src/BaseSystem.c:40:46: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+   40 |         registerFrame[0x12].U16 = (uint16_t)(fabs(KFoutput[1] * 10)); //Z-axis Actual Speed = 20
+      |                                              ^~~~
+../Core/Src/BaseSystem.c:8:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    7 | #include <BaseSystem.h>
+  +++ |+#include <math.h>
+    8 | 
+../Core/Src/BaseSystem.c:40:46: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+   40 |         registerFrame[0x12].U16 = (uint16_t)(fabs(KFoutput[1] * 10)); //Z-axis Actual Speed = 20
+      |                                              ^~~~
+../Core/Src/BaseSystem.c:40:46: note: include '<math.h>' or provide a declaration of 'fabs'
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  52568	    724	   6192	  59484	   e85c	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+22:18:19 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/BaseSystem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/ARM_CMSIS/CMSIS/Core/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/PrivateInclude/ -I../Middlewares/Third_Party/ARM_CMSIS/Include/ -I../Middlewares/Third_Party/ARM_CMSIS/Include -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BasicMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/BayesFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/CommonTables" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ComplexMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/ControllerFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/DistanceFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FastMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/FilteringFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/InterpolationFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/MatrixFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/QuaternionMathFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/StatisticsFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SupportFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/SVMFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/TransformFunctions" -I"C:/Users/emper/STM32CubeIDE/workspace_1.14.1/FRA262_1DOF_ASRS/FRA262_Studio3/Source/WindowFunctions" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/BaseSystem.d" -MT"Core/Src/BaseSystem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/BaseSystem.o"
+../Core/Src/BaseSystem.c:12:8: warning: type defaults to 'int' in declaration of 'STATE' [-Wimplicit-int]
+   12 | extern STATE;
+      |        ^~~~~
+../Core/Src/BaseSystem.c: In function 'Routine':
+../Core/Src/BaseSystem.c:40:46: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+   40 |         registerFrame[0x12].U16 = (uint16_t)(fabs(KFoutput[1] * 10)); //Z-axis Actual Speed = 20
+      |                                              ^~~~
+../Core/Src/BaseSystem.c:8:1: note: include '<math.h>' or provide a declaration of 'fabs'
+    7 | #include <BaseSystem.h>
+  +++ |+#include <math.h>
+    8 | 
+../Core/Src/BaseSystem.c:40:46: warning: incompatible implicit declaration of built-in function 'fabs' [-Wbuiltin-declaration-mismatch]
+   40 |         registerFrame[0x12].U16 = (uint16_t)(fabs(KFoutput[1] * 10)); //Z-axis Actual Speed = 20
+      |                                              ^~~~
+../Core/Src/BaseSystem.c:40:46: note: include '<math.h>' or provide a declaration of 'fabs'
+arm-none-eabi-gcc -o "FRA262_Studio3.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\emper\STM32CubeIDE\workspace_1.14.1\FRA262_1DOF_ASRS\FRA262_Studio3\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FRA262_Studio3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: FRA262_Studio3.elf
+ 
+arm-none-eabi-size  FRA262_Studio3.elf 
+arm-none-eabi-objdump -h -S FRA262_Studio3.elf  > "FRA262_Studio3.list"
+   text	   data	    bss	    dec	    hex	filename
+  52568	    724	   6192	  59484	   e85c	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 
+Finished building: FRA262_Studio3.list
+ 
+22:53:21 **** Incremental Build of configuration Debug for project FRA262_Studio3 ****
+make -j16 all 
+arm-none-eabi-size  FRA262_Studio3.elf 
+   text	   data	    bss	    dec	    hex	filename
+  52568	    724	   6192	  59484	   e85c	FRA262_Studio3.elf
+Finished building: default.size.stdout
+ 

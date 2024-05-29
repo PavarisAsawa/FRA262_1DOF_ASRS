@@ -20,7 +20,7 @@ extern float SetPosition;
 extern float SteadyPosition;
 extern uint64_t micros();
 
-uint32_t delay_time = 400000;
+uint32_t delay_time = 600000;
 
 extern uint8_t test2;
 //extern QEIStructureTypeDef QEI;
@@ -205,7 +205,7 @@ void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef 
 					else
 					{
 						PP = PUSH;
-						timestamp = micros() + delay_time + 400000;		// delay push seconds?
+						timestamp = micros() + delay_time;		// delay push seconds?
 					}
 					break;
 

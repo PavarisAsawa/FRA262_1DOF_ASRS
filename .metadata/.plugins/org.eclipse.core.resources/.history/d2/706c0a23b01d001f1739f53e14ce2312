@@ -20,8 +20,6 @@ extern float SetPosition;
 extern float SteadyPosition;
 extern uint64_t micros();
 
-uint32_t delay_time = 400000;
-
 extern uint8_t test2;
 //extern QEIStructureTypeDef QEI;
 
@@ -183,7 +181,7 @@ void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef 
 			if(fabs(QEI->LinearPosition - SetPosition) <= 0.1)
 			{
 				Motor_Control(_BACKDRIVE_FACTOR);
-//				flag->TrejectoryGen = 0;
+				flag->TrejectoryGen = 0;
 				if(flag->jogTIME % 2 == 0) SUBSTATE = PICKING;				//	Pick
 				else if(flag->jogTIME % 2 == 1) SUBSTATE = PLACING;		//	Place
 				/*                Delay Time      */
@@ -205,7 +203,7 @@ void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef 
 					else
 					{
 						PP = PUSH;
-						timestamp = micros() + delay_time + 400000;		// delay push seconds?
+						timestamp = micros() + 400000;		// delay push seconds?
 					}
 					break;
 
@@ -219,25 +217,22 @@ void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef 
 					else
 					{
 						PP = PULL;
-						timestamp = micros() + delay_time;		// delay push seconds?
+						timestamp = micros() + 300000;		// delay push seconds?
 					}
 					break;
 				case PULL:
 					if(micros() < timestamp)
 					{
 						Motor_Control(_BACKDRIVE_FACTOR);
-						SolenoidSuck(1);
 						SolenoidPull();
+						SolenoidSuck(1);
 					}
-//					else if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7) && micros() > timestamp)
 					else if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7))
-
 					{
 						PP = DONE;
 					}
 					break;
 				case DONE:
-					flag->TrejectoryGen = 0;
 					SolenoidPull();
 					flag->jogTIME +=1;
 					SUBSTATE = IDLE;
@@ -256,7 +251,7 @@ void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef 
 					else
 					{
 						PP = PUSH;
-						timestamp = micros() + delay_time;		// delay push seconds?
+						timestamp = micros() + 300000;		// delay push seconds?
 					}
 					break;
 
@@ -270,24 +265,23 @@ void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef 
 					else
 					{
 						PP = PULL;
-						timestamp = micros() + delay_time;		// delay pull seconds?
+						timestamp = micros() + 300000;		// delay push seconds?
 					}
 					break;
 				case PULL:
 					if(micros() < timestamp)
 					{
 						Motor_Control(_BACKDRIVE_FACTOR);
-						SolenoidSuck(0);
 						SolenoidPull();
+						SolenoidSuck(0);
 					}
-//					else if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7) && micros() > timestamp)
 					else if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7))
+//					else
 					{
 						PP = DONE;
 					}
 					break;
 				case DONE:
-					flag->TrejectoryGen = 0;
 					SolenoidPull();
 					flag->jogTIME +=1;
 					SUBSTATE = IDLE;
