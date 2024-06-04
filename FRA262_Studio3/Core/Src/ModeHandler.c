@@ -8,7 +8,7 @@
 #include "ModeHandler.h"
 #include "main.h"
 
-uint64_t _BACKDRIVE_FACTOR = 102;
+uint64_t _BACKDRIVE_FACTOR = 102; //102
 uint64_t MAX_SPEED = 180;
 
 extern TIM_HandleTypeDef htim4;
@@ -20,7 +20,7 @@ extern float SetPosition;
 extern float SteadyPosition;
 extern uint64_t micros();
 
-uint32_t delay_time = 400000;
+uint32_t delay_time = 300000;
 
 extern uint8_t test2;
 //extern QEIStructureTypeDef QEI;
@@ -136,7 +136,7 @@ void Point_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDe
 	flag->TrejectoryGen = 1;
 	PIDControllerCascade_Command2(PIDp, PIDv, QEI, quintic->Position, quintic->Velocity);
 	Motor_Control((int32_t)PIDv->Command);
-	if(fabs(QEI->LinearPosition - goal) <= 0.05)
+	if(fabs(QEI->LinearPosition - goal) <= 0.05 && quintic->STATE == 3)
 	{
 		flag->Point = 2;
 		flag->TrejectoryGen =0;
@@ -178,7 +178,8 @@ void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef 
 
 			/*                    */
 			SolenoidPull();
-			SolenoidSuck(1);
+			if(flag->jogTIME % 2 == 0) SolenoidSuck(0);
+			else if(flag->jogTIME % 2 == 1) SolenoidSuck(1);       //
 
 			if(fabs(QEI->LinearPosition - SetPosition) <= 0.1)
 			{
@@ -205,7 +206,7 @@ void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef 
 					else
 					{
 						PP = PUSH;
-						timestamp = micros() + delay_time + 400000;		// delay push seconds?
+						timestamp = micros() + delay_time + 300000;		// delay push seconds?
 					}
 					break;
 
@@ -265,7 +266,7 @@ void Jog_mode(FlagTypeDef *flag,PIDStructureTypeDef *PIDp , PIDStructureTypeDef 
 					{
 						Motor_Control(_BACKDRIVE_FACTOR);
 						SolenoidPush();
-						if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9)) SolenoidSuck(0);
+						if(!HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9)) SolenoidSuck(0);
 					}
 					else
 					{

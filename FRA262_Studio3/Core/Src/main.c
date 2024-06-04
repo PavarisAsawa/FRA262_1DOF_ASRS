@@ -186,11 +186,11 @@ int main(void)
 
   HAL_ADC_Start_DMA(&hadc1, Joystick.XYBuffer, 200);
 
-  float PID_P_up[3] = {0.82 ,0.000038, 0}; //{0.82 ,0.000038, 0};
-  float PID_P_down[3] = {0.88 ,0.000028, 0}; //{0.88 ,0.000028, 0}
+  float PID_P_up[3] = {0.68 ,0.000012, 0}; //{0.82 ,0.000038, 0};  {0.68 ,0.000012, 0}
+  float PID_P_down[3] = {0.68 ,0.000012, 0}; //{0.88 ,0.000028, 0}
 
-  float PID_V_up[3] = {3.7 ,0.0013, 0.00000054}; //{4.38 ,0.005, 0.0000039}  {4.35 ,0.0038, 0.0000039}
-  float PID_V_down[3] = {3.4 ,0.00085, 0.00000054};
+  float PID_V_up[3] = {3.7 ,0.0013, 0.00000054}; //{3.7 ,0.0013, 0.00000054}  {3.0 ,0.00054, 0.00000039}
+  float PID_V_down[3] = {3.4 ,0.00085, 0.00000054}; //{3.4 ,0.00085, 0.00000054}
 
   QEIEncoder_Init(&QEI,&htim5);							// Initialize QEI Encoder
   PIDController_Init(&PIDp, PID_P_up[0], PID_P_up[1], PID_P_up[2] , PID_P_down[0], PID_P_down[1], PID_P_down[2]);	// Initialize Position Controller
@@ -237,7 +237,9 @@ int main(void)
 //			SolenoidPull();
 //			NoiseTest1();
 			PIDControllerCascade_Command2(&PIDp, &PIDv, &QEI, SteadyPosition, 0);
-			Motor_Control((int32_t)(PIDv.Command));
+//			if(fabs(SteadyPosition - QEI.LinearPosition) >= 0.05)
+				Motor_Control((int32_t)(PIDv.Command));
+//			else Motor_Control(102);
 			QuinticTrajectory_SetReady(&quintic);
 			break;
 
@@ -277,6 +279,7 @@ int main(void)
 			status.Z_Status = 16;
 			GetGoalPoint();
 			SetPosition = (float)Value.GoalPoint + QEI.HomePosition;
+			SteadyPosition = SetPosition;
 			Point_mode(&Flag,&PIDp,&PIDv,&QEI,&quintic,SetPosition);
 			if(Flag.Point == 2)				// Finish Point
 			{
@@ -303,6 +306,39 @@ int main(void)
 			break;
 		case EMERGENCY:
 			Motor_Control(0);
+			static uint8_t oldStateJoy;
+			static uint64_t lastTIMEJoy;
+
+			if(!HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5))
+			{
+				STATE = IDLE;
+				status.reset = 0;
+				registerFrame[0x01].U16 = 0; //reset Base System Status
+				status.Z_Status = 0;
+				Flag.setHome = 0;
+				Flag.setShelve = 0;
+				Flag.Point = 0;
+				Flag.Jog = 0;
+				SteadyPosition = QEI.LinearPosition;
+			}
+
+//			if(!HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5))
+//			{
+//				 lastTIMEJoy = micros();
+//			}
+//
+//			  if (!oldStateJoy && !HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5) && (micros()- lastTIMEJoy > 100000))
+//			  {
+//				STATE = IDLE;
+//				status.reset = 0;
+//				registerFrame[0x01].U16 = 0; //reset Base System Status
+//				status.Z_Status = 0;
+//				Flag.setHome = 0;
+//				Flag.setShelve = 0;
+//				Flag.Point = 0;
+//				Flag.Jog = 0;
+//			  }
+//			  oldStateJoy = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5);
 			break;
 	}
 	  FwReed = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9);
@@ -840,8 +876,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)	// Timer Interrupt
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)				//	External Interrupt
 {
-	if(GPIO_Pin == GPIO_PIN_13)			// Blue Switch
-	{
+	if(GPIO_Pin == GPIO_PIN_13){			// Blue Switch
+//		STATE = IDLE;
+//		status.reset = 0;
+//		registerFrame[0x01].U16 = 0; //reset Base System Status
+//		status.Z_Status = 0;
+//		Flag.setHome = 0;
+//		Flag.setShelve = 0;
+//		Flag.Point =0;
+//		Flag.Jog;
 	}
 }
 
@@ -856,6 +899,7 @@ void EmergencyCatcher()
 		  lastTIME = micros();
 	  }
 	  oldState = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6);
+
 }
 
 uint64_t micros()	// System Time

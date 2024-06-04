@@ -62,12 +62,14 @@ void QuinticTrajectory_Generator(QuinticTypeDef *q, float pi ,float pf , float t
 						q->c[4]*powf(q->t,4) +
 						q->c[5]*powf(q->t,5);
 
-		q->Velocity = q->c[1] + 2*q->c[2]*q->t + 3*q->c[3]*powf(q->t,2) + 4*q->c[4]*powf(q->t,3) + 5*q->c[5]*powf(q->t,4);
+		q->Velocity = q->c[1] + (float)2*q->c[2]*q->t + (float)3*q->c[3]*powf(q->t,2) + (float)4*q->c[4]*powf(q->t,3) + (float)5*q->c[5]*powf(q->t,4);
 		q->Acceleration = 2*q->c[2] + 6*q->c[3]*q->t + 12*q->c[4]*powf(q->t,2) + 20*q->c[5]*powf(q->t,3);
 		q->t += period;
 		if(q->t >= tf)
 		{
 			q->Position = q->Pf;
+//			q->Velocity = 0;
+//			q->Acceleration =0;
 			q->STATE = FINISH;
 		}
 		break;

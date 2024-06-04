@@ -1,7 +1,7 @@
 ../Core/Src/ModeHandler.c:38:6:SetShelve_mode	15
 ../Core/Src/ModeHandler.c:102:6:SetHome_mode	7
-../Core/Src/ModeHandler.c:133:6:Point_mode	2
-../Core/Src/ModeHandler.c:148:6:Jog_mode	32
-../Core/Src/ModeHandler.c:309:6:SolenoidPush	2
-../Core/Src/ModeHandler.c:323:6:SolenoidPull	2
-../Core/Src/ModeHandler.c:338:6:SolenoidSuck	2
+../Core/Src/ModeHandler.c:133:6:Point_mode	3
+../Core/Src/ModeHandler.c:148:6:Jog_mode	34
+../Core/Src/ModeHandler.c:310:6:SolenoidPush	2
+../Core/Src/ModeHandler.c:324:6:SolenoidPull	2
+../Core/Src/ModeHandler.c:339:6:SolenoidSuck	2

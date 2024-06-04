@@ -2,6 +2,6 @@
 ../Core/Src/ModeHandler.c:102:6:SetHome_mode	32	static
 ../Core/Src/ModeHandler.c:133:6:Point_mode	32	static
 ../Core/Src/ModeHandler.c:148:6:Jog_mode	104	static
-../Core/Src/ModeHandler.c:309:6:SolenoidPush	8	static
-../Core/Src/ModeHandler.c:323:6:SolenoidPull	8	static
-../Core/Src/ModeHandler.c:338:6:SolenoidSuck	16	static
+../Core/Src/ModeHandler.c:310:6:SolenoidPush	8	static
+../Core/Src/ModeHandler.c:324:6:SolenoidPull	8	static
+../Core/Src/ModeHandler.c:339:6:SolenoidSuck	16	static
